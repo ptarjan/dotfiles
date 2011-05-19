@@ -1,0 +1,69 @@
+[submodule ".vim/bundle/nerdcommenter"]
+	path = .vim/bundle/nerdcommenter
+	url = http://github.com/scrooloose/nerdcommenter.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = http://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = http://github.com/ervandew/supertab.git
+[submodule ".vim/bundle/vim-autocomplpop"]
+	path = .vim/bundle/vim-autocomplpop
+	url = http://github.com/clones/vim-autocomplpop.git
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = http://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/vim-markdown"]
+	path = .vim/bundle/vim-markdown
+	url = http://github.com/tpope/vim-markdown.git
+[submodule ".vim/bundle/vim-ruby"]
+	path = .vim/bundle/vim-ruby
+	url = http://github.com/vim-ruby/vim-ruby.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = http://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/vimclojure"]
+	path = .vim/bundle/vimclojure
+	url = http://github.com/clones/vimclojure.git
+[submodule ".vim/bundle/vim-cecutil"]
+	path = .vim/bundle/vim-cecutil
+	url = http://github.com/clones/vim-cecutil.git
+[submodule ".vim/bundle/vim-align"]
+	path = .vim/bundle/vim-align
+	url = http://github.com/clones/vim-align.git
+[submodule ".vim/bundle/vim-genutils"]
+	path = .vim/bundle/vim-genutils
+	url = http://github.com/clones/vim-genutils.git
+[submodule ".vim/bundle/vim-multvals"]
+	path = .vim/bundle/vim-multvals
+	url = http://github.com/clones/vim-multvals.git
+[submodule ".vim/bundle/vim-taglist"]
+	path = .vim/bundle/vim-taglist
+	url = http://github.com/clones/vim-taglist.git
+[submodule ".vim/bundle/vim-flash"]
+	path = .vim/bundle/vim-flash
+	url = http://github.com/clones/vim-flash.git
+[submodule ".vim/bundle/vim-nginx"]
+	path = .vim/bundle/vim-nginx
+	url = http://github.com/clones/vim-nginx.git
+[submodule ".vim/bundle/vim-zsh"]
+	path = .vim/bundle/vim-zsh
+	url = http://github.com/clones/vim-zsh.git
+[submodule ".vim/bundle/vim-jade"]
+	path = .vim/bundle/vim-jade
+	url = http://github.com/digitaltoad/vim-jade.git
+[submodule ".vim/bundle/vim-l9"]
+	path = .vim/bundle/vim-l9
+	url = https://github.com/clones/vim-l9.git
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
+	url = https://github.com/rstacruz/ack.vim.git
+[submodule ".vim/bundle/vim-lusty"]
+	path = .vim/bundle/vim-lusty
+	url = https://github.com/sjbach/lusty.git
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "pyflakes.vim"]
+	path = pyflakes.vim
+	url = https://github.com/vim-scripts/pyflakes.vim.git
