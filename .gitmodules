@@ -67,3 +67,6 @@
 [submodule "pyflakes.vim"]
 	path = pyflakes.vim
 	url = https://github.com/vim-scripts/pyflakes.vim.git
+[submodule ".vim/bundle/pyflakes.vim"]
+	path = .vim/bundle/pyflakes.vim
+	url = https://github.com/vim-scripts/pyflakes.vim.git
