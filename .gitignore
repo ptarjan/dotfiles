@@ -1,6 +1,7 @@
 .NERDTreeBookmarks
 .arcrc
 .bash_history
+.hive_completions
 .hive_history
 .hphp
 .hphp.bak
@@ -14,8 +15,8 @@
 .pyhistory
 .snapshot
 .ssh/
-.viminfo*
 .vim-fuf-data/
+.viminfo*
 .vnc
 backup
 hacks
