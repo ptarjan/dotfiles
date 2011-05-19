@@ -1,0 +1,85 @@
+### Visitors!
+### Please borrow freely from this config, but make sure to change
+### the [user] section to your info
+
+[core]
+	excludesfile = /home/ptarjan/.gitignore
+
+### colors are meant for a dark terminal
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[color "branch"]
+	current = white blue bold
+	local  = blue
+	remote = green
+[color "diff"]
+	plain = white
+	meta = yellow bold
+	frag = magenta bold
+	old = red
+	new = green
+	whitespace = red blink
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[alias]
+	# "garbage-collect branches" whose tips have been merged into HEAD
+	amend = commit --amend
+	bb = bisect bad
+	bg = bisect good
+	br = branch
+	castle = !git push -f ssh://sandcastle.facebook.com/data/git/tfb HEAD:refs/users/`whoami`
+	ci = commit
+	co = checkout
+	cp = cherry-pick
+        di = diff
+        edit = !$EDITOR `git diff HEAD^ --name-only`
+	gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -d || exit 0
+	gr = grep -i
+	incr = commit --amend -C HEAD
+	plus = commit --amend -a -C HEAD
+	rb = rebase
+	sh = !git-sh
+	st = status
+	su = status -uno
+        dm = !git log -p -w --reverse HEAD...`git merge-base HEAD master`
+        rbi = rebase -i
+        rbit = !git rebase -i `git merge-base HEAD git-svn`
+        cm = !git diff --name-only HEAD^ | sed 's@/[^/]*$@@' | uniq | xargs ~/www/flib/_bin/checkModule -c
+        vim = !bash -c 'vim -p $(git diff --name-only "$1")' -
+
+[svn]
+	followparent = true
+        rmdir = true
+
+[commit]
+	template = /home/ptarjan/admin/scripts/templates/git-commit-template.txt
+[user]
+	name = Paul Tarjan
+	email = ptarjan@fb.com
+[log]
+	date = relative
+[blame]
+	date = short
+[diff]
+	renames = true
+	mnemonicprefix = true
+	# external = /home/ptarjan/bin/git/colordiff-wrapper.sh
+[apply]
+	whitespace = strip
+[merge]
+	tool = emerge
+[status]
+	# relativePaths = false
+[web]
+	browser = lynx
+[rebase]
+	stat = true
+[gc]
+	auto = 0
