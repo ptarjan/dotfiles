@@ -23,6 +23,7 @@
 backup
 hacks
 local
+logs/
 other-git
 tags
 tmp
