@@ -102,7 +102,7 @@ nmap <silent> ,, :tabprevious<CR>
 nmap <silent> .. :tabnext<CR>
 
 " follow tag in tab
-" map <silent> <C-]> :tab tag <c-r><c-w><cr>
+map <silent> <C-]> <C-w><C-]><C-W>T
 
 " Edit another file in the same directory as the current file, use: ,e
 if has("unix")
@@ -124,7 +124,7 @@ map ,8 /\%>80v.\+<CR>
 map <C-c> :%s/\s\+$//<CR>
 
 " Tag List
-nmap <silent> T :TlistToggle<CR>
+" nmap <silent> T :TlistToggle<CR>
 
 " Nerd Tree
 nmap <silent> F :NERDTreeToggle<CR>
