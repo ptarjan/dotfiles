@@ -15,6 +15,7 @@
 .pyhistory
 .snapshot
 .ssh/
+.subversion
 .tags
 .vim-fuf-data/
 .vim/.netrwhist
