@@ -76,3 +76,9 @@
 [submodule ".vim/bundle/The-NERD-tree"]
 	path = .vim/bundle/The-NERD-tree
 	url = https://github.com/vim-scripts/The-NERD-tree.git
+[submodule ".vim/bundle/moria"]
+	path = .vim/bundle/moria
+	url = https://github.com/vim-scripts/moria.git
+[submodule ".vim/bundle/Solarized"]
+	path = .vim/bundle/Solarized
+	url = https://github.com/vim-scripts/Solarized.git

@@ -155,40 +155,9 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-" Transparent editing of gpg encrypted files.
-" By Wouter Hanegraaff <wouter@blub.net>
-augroup encrypted
-  au!
-
-  " First make sure nothing is written to ~/.viminfo while editing
-  " an encrypted file.
-  autocmd BufReadPre,FileReadPre      *.gpg set viminfo=
-  " We don't want a swap file, as it writes unencrypted data to disk
-  autocmd BufReadPre,FileReadPre      *.gpg set noswapfile
-  " Switch to binary mode to read the encrypted file
-  autocmd BufReadPre,FileReadPre      *.gpg set bin
-  autocmd BufReadPre,FileReadPre      *.gpg let ch_save = &ch|set ch=2
-  autocmd BufReadPost,FileReadPost    *.gpg '[,']!gpg --decrypt 2> /dev/null
-  " Switch to normal mode for editing
-  autocmd BufReadPost,FileReadPost    *.gpg set nobin
-  autocmd BufReadPost,FileReadPost    *.gpg let &ch = ch_save|unlet ch_save
-  autocmd BufReadPost,FileReadPost    *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
-
-  " Convert all text to encrypted text before writing
-  autocmd BufWritePre,FileWritePre    *.gpg   '[,']!gpg --default-recipient-self -ae 2>/dev/null
-  " Undo the encryption so we are back in the normal text, directly
-  " after the file has been written.
-  autocmd BufWritePost,FileWritePost  *.gpg   u
-augroup END
-
 " custom file detects syntax files
 augroup filetypedetect
-  au BufNewFile,BufRead *.yicf set syntax=yicf filetype=yicf
-  au BufNewFile,BufRead *.procinfo set syntax=procinfo filetype=procinfo
-  au BufNewFile,BufRead *.fbml set filetype=htmldjango
-  au BufNewFile,BufRead SConstruct set filetype=python
   au BufNewFile,BufRead *.phpt set filetype=php
-  au BufNewFile,BufRead PKGBUILD set filetype=sh
 augroup END
 
 " files in /tmp, like crontabs need this
@@ -196,20 +165,6 @@ autocmd BufReadPost /tmp/* set backupcopy=yes
 
 " python world is 4 spaces
 au BufNewFile,BufRead *.py setlocal shiftwidth=4
-
-" GitGrep
-func GitGrep(...)
-  let save = &grepprg
-  set grepprg=git\ grep\ -n\ $*
-  let s = 'grep'
-  for i in a:000
-    let s = s . ' ' . i
-  endfor
-  exe s
-  let &grepprg = save
-endfun
-command -nargs=? G call GitGrep(<f-args>)
-command -nargs=? GP call GitGrep(<f-args>, "-- *.php")
 
 " clojure
 let g:vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
@@ -231,9 +186,6 @@ fun! s:SelectTXT()
   endwhile
 endfun
 autocmd BufNewFile,BufRead *.txt  call s:SelectTXT()
-
-" rst world is 4 spaces
-au BufNewFile,BufRead *.rst	setlocal shiftwidth=4
 
 " also acceptable
 au BufNewFile,BufRead *.json	set filetype=javascript
@@ -288,14 +240,6 @@ function! SplitGitShow()
   normal ggdd
   execute "normal \<M-j>"
 endfunction
-
-" More lispy indent
-au BufNewFile,BufRead *.clj  setlocal lispwords+=defentity,defroutes,defproject,deftest,testing,deferror,describe,given
-au BufNewFile,BufRead *.clj  set ft=clojure
-
-" jade
-au BufNewFile,BufRead *.jade  set ft=jade
-
 
 " ___________________
 " ptarjan's additions
