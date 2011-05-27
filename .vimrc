@@ -52,19 +52,6 @@ colorscheme daaku
 " CWD Sensitive Tags
 " let &tags=system("~/.vim/bin/find-tags")
 
-" Force Colors
-if &term =~ "xterm"
-  set t_Co=8
-
-  if has("terminfo")
-    set t_Sf=[3%p1%dm
-    set t_Sb=[4%p1%dm
-  else
-    set t_Sf=[3%dm
-    set t_Sb=[4%dm
-  endif
-endif
-
 " GUI Font
 if has("gui_gtk")
   set guifont=Monospace\ 11
