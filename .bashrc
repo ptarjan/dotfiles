@@ -83,7 +83,7 @@ _git_branches()
   return 0
 }        
          
-if [ -t 0 -a $TERM != 'screen' ]; then
+if [ -t 0 -a $TERM != 'screen' -a `hostname` == 'dev1115.snc6.facebook.com' ]; then
   screen -RD default
 fi
 
