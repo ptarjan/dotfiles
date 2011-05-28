@@ -84,7 +84,7 @@ _git_branches()
 }        
          
 if [ -t 0 -a $TERM != 'screen' ]; then
-  screen -A -R default
+  screen -RD default
 fi
 
 # autocomplete ssh
