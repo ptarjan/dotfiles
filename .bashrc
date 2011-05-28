@@ -1,41 +1,11 @@
 # .bashrc
 
-# User specific aliases and functions
-
-# Source global definitions
-# master.bashrc is meant to be sourced by all bash users so be careful
-#
-# if you are looking instead at ~/.bashrc then do whatever you want!
-
-# please uncomment these two lines in your personal ~/.bashrc:
-export ADMIN_SCRIPTS=~engshare/admin/scripts
-source "$ADMIN_SCRIPTS"/master.bashrc
-
-# this keeps you up to date with the latest master.bashrc changes; if you opt
-# not to, you'll be on you own staying up to date with general changes
-
-# if you want to be able to easily make, test, and commit changes to
-# master.bashrc and master.shellrc in svnroot/admin/scripts:
-# - checkout a copy of svnroot/admin to ~/admin
-# - cron it to auto-up (having a stale ~/admin is asking for pain)
-# - source master.bashrc from your ~/.bashrc instead like so:
-# export ADMIN_SCRIPTS=~/svnroot/admin/scripts
-# source "$ADMIN_SCRIPTS"/master.bashrc
-
-# when you copy master.bashrc to ~/.bashrc you don't have to actually keep
-#   the remainder of these lines (since they are pulled in by sourcing
-#   master.bashrc), though you can (doing them twice is harmless and adds
-#   negilble time to the loading of the shell)
-# instead you can start making your personal modifications
-
-
-if [[ -z "$ADMIN_SCRIPTS" ]]
+export ADMIN_SCRIPTS='/home/engshare/admin/scripts'
+if [[ -d "$ADMIN_SCRIPTS" ]]
 then
-  export ADMIN_SCRIPTS='/home/engshare/admin/scripts'
+  source "$ADMIN_SCRIPTS"/master.bashrc
+  source "$ADMIN_SCRIPTS"/master.shellrc
 fi
-
-# things that work in more than just bash
-source "$ADMIN_SCRIPTS"/master.shellrc
 
 #
 # bash-specific things below
@@ -54,31 +24,18 @@ source ~/.bashrc_git_custom_completion
 
 PROMPT_COLOR='0;32m'
 if [ ${UID} -eq 0 ]; then
-    PROMPT_COLOR='0;31m'
+  PROMPT_COLOR='0;31m'
 fi
 
-ESCAPED_HOME=`echo $HOME | sed -r "s:/:\\\\\\/:g"`
+ESCAPED_HOME=`echo $HOME | sed "s:/:\\\\\\/:g"`
 
-PS1='\[\033[0;33m\]\t\[\033[0;0m\] \[\033[${PROMPT_COLOR}\]\u@\h\[\033[0;0m\]:`pwd | sed -r "s/${ESCAPED_HOME}/~/" | sed -r "s/^.*\/(.*)(\/.*)(\/.*)$/\1\2\3/"`$(__git_ps1 " (%s)")\$ '
-
-#alias phpsh="www/scripts/phpsh/phpsh"
-
-#if [ $TERM != 'screen' ]; then
-#    screen -A -x
-#fi
-
-export PYTHONPATH=$PYTHONPATH:../parsers/mechanize
+PS1='\[\033[0;33m\]\t\[\033[0;0m\] \[\033[${PROMPT_COLOR}\]\u@\h\[\033[0;0m\]:`pwd | sed "s/${ESCAPED_HOME}/~/" | sed "s/^.*\/\(.*\)\(\/.*\)\(\/.*\)$/\1\2\3/"`$(__git_ps1 " (%s)")\$ '
 
 EDITOR=vim; export EDITOR
 
 # Aliases
-alias ar='~/www/scripts/static_resources/analyze_resources'
-alias ar2='~/www2/scripts/static_resources/analyze_resources'
-alias ar3='~/www3/scripts/static_resources/analyze_resources'
 alias arc='/home/engshare/devtools/arcanist/bin/arc'
 alias tbgs='tbgs --forcedir "~/www"'
-alias fbgrep='tbgs'
-alias grepfb='tbgs'
 alias s='scan'
 alias g='git'
 alias cleanup='find . -type f -name "._*" -exec rm {} \;'
@@ -100,11 +57,8 @@ alias grt='git rebase trunk'
 alias gsh='git show --pretty=short --stat'
 alias gca='git commit --amend -CHEAD -a'
 alias gclean='git branch -d `git branch | grep -v "*"`'
-alias rt='cd ~/www'
 alias restart_hphp='sudo su -l -c "sudo webserver restart"'
 alias restart_apache='sudo su -l -c "/var/www/scripts/pusher/pusher_agent reload"'
-alias phpsh='phpsh ~/scripts/default.php'
-alias amap='rt; ./scripts/lite/generate-autoload-map.php; cd - 2>&1 > /dev/null'
 alias vi='vim'
 alias cm='~/www/flib/_bin/checkModule'
 alias cmc='cm -c'
@@ -113,8 +67,10 @@ function f(){ find . -iname "*$@*.*" | grep "$@"; }
 
 # Python environment vars
 export HIVE_RLWRAP=true
-source /mnt/vol/hive/dis/lib/utils/hive.include
-hive_select_release silver
+if [ -f /mnt/vol/hive/dis/lib/utils/hive.include ]; then
+  source /mnt/vol/hive/dis/lib/utils/hive.include
+  hive_select_release silver
+fi
 
 shopt -s progcomp
        
@@ -128,23 +84,19 @@ _git_branches()
 }        
          
 if [ -t 0 -a $TERM != 'screen' ]; then
-    screen -A -R default
+  screen -A -R default
 fi
 
 # autocomplete ssh
 rhosts=localhost
 if [ -f ~/.ssh/known_hosts ] ; then
-       rhosts="$rhosts `cat ~/.ssh/known_hosts | awk '{print $1}' | sed -e 's/,.*//g'`"
+  rhosts="$rhosts `cat ~/.ssh/known_hosts | awk '{print $1}' | sed -e 's/,.*//g'`"
 fi
 #if [ -f /etc/hosts ] ; then
 #       rhosts="$rhosts `cat /etc/hosts | awk '!/(#.*|127.*)/ {print $2}'`"
 #fi
 complete -W "`echo $rhosts`" telnet ssh sftp ftp ping traceroute nslookup dig
 unset rhosts
-
-export HIVE_RLWRAP=true
-source /mnt/vol/hive/dis/lib/utils/hive.include
-hive_select_release silver.latest
 
 # dont do Control+S
 stty -ixon
