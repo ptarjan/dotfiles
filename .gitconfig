@@ -51,7 +51,6 @@
         dm = !git log -p -w --reverse HEAD...`git merge-base HEAD master`
         rbi = rebase -i
         rbit = !git rebase -i `git merge-base HEAD git-svn`
-        cm = !git diff --name-only HEAD^ | sed 's@/[^/]*$@@' | uniq | xargs ~/www/flib/_bin/checkModule -c
         vim = !bash -c 'vim -p $(git diff --name-only "$1")' -
 
 [svn]
