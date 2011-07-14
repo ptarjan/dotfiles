@@ -60,8 +60,7 @@ alias gclean='git branch -d `git branch | grep -v "*"`'
 alias restart_hphp='sudo su -l -c "sudo webserver restart"'
 alias restart_apache='sudo su -l -c "/var/www/scripts/pusher/pusher_agent reload"'
 alias vi='vim'
-alias cm='~/www/flib/_bin/checkModule'
-alias cmc='cm -c'
+alias cmf='cmf --head --fix --apply-patches'
 
 function f(){ find . -iname "*$@*.*" | grep "$@"; }
 
