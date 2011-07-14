@@ -1,4 +1,5 @@
 " ~/.vimrc    ::   Naitik Shah <naitik.shah@yahoo.com>
+
 set rtp=~/.vim,$VIMRUNTIME
 set autoindent
 set backupcopy=yes  " to keep mac creator codes
@@ -87,9 +88,6 @@ nmap <silent> <C-y> :tabnew<cr>
 imap <silent> <C-y> <ESC>:tabnew<cr>
 nmap <silent> ,, :tabprevious<CR>
 nmap <silent> .. :tabnext<CR>
-
-" follow tag in tab
-map <silent> <C-]> <C-w><C-]><C-W>T
 
 " Edit another file in the same directory as the current file, use: ,e
 if has("unix")
@@ -225,8 +223,23 @@ function! SplitGitShow()
     silent read !echo "oops"
   endif
   normal ggdd
-  execute "normal \<M-j>"
+  execute "normal \<C-w>\h"
+  normal %s/Reviewers: /Reviewers: jcain, rhe, naitik, caseymrm/
+  normal gg
 endfunction
+
+" FB STUFF
+if hostname() =~# "^[a-z][a-z]*[0-9][0-9]*\.snc[0-9]\.facebook\.com$"
+  let g:on_dev = 1
+else
+  let g:on_dev = 0
+endif
+
+if g:on_dev
+  source /home/engshare/admin/scripts/vim/biggrep.vim
+  source /home/engshare/admin/scripts/vim/php-doc.vim
+  noremap <C-\> :TBGW<CR>
+endif
 
 " ___________________
 " ptarjan's additions
