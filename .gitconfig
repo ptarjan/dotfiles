@@ -59,10 +59,10 @@
         rmdir = true
 
 [commit]
-	template = /home/ptarjan/admin/scripts/templates/git-commit-template.txt
+        # template = /home/ptarjan/admin/scripts/templates/git-commit-template.txt
 [user]
 	name = Paul Tarjan
-	email = ptarjan@fb.com
+	email = github@paulisageek.com
 [log]
 	date = relative
 [blame]

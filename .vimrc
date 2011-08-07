@@ -1,8 +1,8 @@
 " ~/.vimrc    ::   Naitik Shah <naitik.shah@yahoo.com>
 set rtp=~/.vim,$VIMRUNTIME
 set autoindent
-set backupcopy=yes  " to keep mac creator codes
-set backupdir=~/.vim/backup
+"set backupcopy=yes  " to keep mac creator codes
+"set backupdir=~/.vim/backup
 set bs=2
 set clipboard=unnamed
 set directory=~/.vim/swaps
@@ -43,6 +43,10 @@ set tabpagemax=15
 let mapleader = ","
 set wildignore+=*.o,*.obj,.git,.svn,.hg,*.gif,*.png,*.jpg,*.zip,*.tgz,*.tar.gz,*.tar.bz2,*.bmp,*.swf,*.eps,*.tiff,*.pdf,*.ps,*.ai,*.avi,*.ico,*.psd,*.docx,*.doc
 set nofoldenable
+
+" pathogen
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
 
 syntax on
 filetype plugin indent on
@@ -156,9 +160,6 @@ au BufNewFile,BufRead *.py setlocal shiftwidth=4
 " clojure
 let g:vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
 let g:vimclojure#ParenRainbow=1           " Rainbow parentheses'!
-
-" pathogen
-call pathogen#runtime_append_all_bundles()
 
 " try to select a better mode based on file contents
 fun! s:SelectTXT()
