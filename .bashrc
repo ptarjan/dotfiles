@@ -60,7 +60,8 @@ alias gclean='git branch -d `git branch | grep -v "*"`'
 alias restart_hphp='sudo su -l -c "sudo webserver restart"'
 alias restart_apache='sudo su -l -c "/var/www/scripts/pusher/pusher_agent reload"'
 alias vi='vim'
-alias cmf='cmf --head --fix --apply-patches'
+alias cm='cmf --head --fix --apply-patches'
+alias submit='arc diff --skip-sandcastle -m'
 
 function f(){ find . -iname "*$@*.*" | grep "$@"; }
 
@@ -100,6 +101,8 @@ unset rhosts
 # dont do Control+S
 stty -ixon
 
+# <CTRL>-W will stop at /
+# COMP_WORDBREAKS=$COMP_WORDBREAKS/
 
 # python virtual env
 # PATH=/home/ptarjan/usr/virtual-python-2.6/bin:$PATH
