@@ -128,7 +128,7 @@ map ,a :Align w=<space>
 " To tell what syntax highlighting group *that* is!
 map <F11> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-map <silent> ,f :FufFile<cr>
+"map <silent> ,f :FufFile<cr>
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -254,3 +254,6 @@ set tags=tags;/
 "syntax enable
 "set background=dark
 "colorscheme solarized
+nmap ,f :FufFileWithCurrentBufferDir
+nmap ,b :FufBuffer
+nmap ,t :FufTaggedFile
