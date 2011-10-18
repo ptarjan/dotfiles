@@ -52,6 +52,8 @@
         rbi = rebase -i
         rbit = !git rebase -i `git merge-base HEAD git-svn`
         vim = !bash -c 'vim -p $(git diff --name-only "$1")' -
+        n = checkout trunk -b
+        r = checkout rebase trunk
 
 [svn]
 	followparent = true
