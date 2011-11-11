@@ -254,6 +254,5 @@ set tags=tags;/
 "syntax enable
 "set background=dark
 "colorscheme solarized
-nmap ,f :FufFileWithCurrentBufferDir
-nmap ,b :FufBuffer
-nmap ,t :FufTaggedFile
+nmap <silent> ,f :FufFileWithCurrentBufferDir<cr>
+nmap <silent> ,b :FufBuffer<cr>

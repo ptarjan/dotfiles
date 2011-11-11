@@ -38,22 +38,22 @@
 	ci = commit
 	co = checkout
 	cp = cherry-pick
-        di = diff
-        edit = !$EDITOR `git diff HEAD^ --name-only`
-	gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -d || exit 0
 	gr = grep -i
 	incr = commit --amend -C HEAD
 	plus = commit --amend -a -C HEAD
-	rb = rebase
 	sh = !git-sh
 	st = status
 	su = status -uno
+        di = diff
         dm = !git log -p -w --reverse HEAD...`git merge-base HEAD master`
+        edit = !$EDITOR `git diff HEAD^ --name-only`
+        gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -d || exit 0
+        n = checkout trunk -b
+        r = rebase trunk
         rbi = rebase -i
         rbit = !git rebase -i `git merge-base HEAD git-svn`
+        rc = rebase --continue
         vim = !bash -c 'vim -p $(git diff --name-only "$1")' -
-        n = checkout trunk -b
-        r = checkout rebase trunk
 
 [svn]
 	followparent = true
