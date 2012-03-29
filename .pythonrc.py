@@ -28,11 +28,8 @@ else:
     def savehist():
         readline.write_history_file(HISTFILE)
 
-    import atexit
-    atexit.register(savehist)
 finally:
     del rlcompleter
-    del atexit
 
 WELCOME=''
 # Color Support

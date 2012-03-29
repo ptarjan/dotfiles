@@ -257,3 +257,5 @@ set tags=tags;/
 nmap ,f :FufFileWithCurrentBufferDir
 nmap ,b :FufBuffer
 nmap ,t :FufTaggedFile
+
+set tabstop=2
