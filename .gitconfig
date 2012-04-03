@@ -48,12 +48,13 @@
         dm = !git log -p -w --reverse HEAD...`git merge-base HEAD master`
         edit = !$EDITOR `git diff HEAD^ --name-only`
         gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -d || exit 0
+        gcbr2 = !for branch in `git for-each-ref --format='%(refname:short)' refs/heads`; do if git show -s $branch | grep 'git-svn-id:'; then echo git branch -D $branch; fi; done
         n = checkout trunk -b
         r = rebase trunk
         rbi = rebase -i
         rbit = !git rebase -i `git merge-base HEAD git-svn`
         rc = rebase --continue
-        vim = !bash -c 'vim -p $(git diff --name-only "$1")' -
+        vim = !bash -c 'vim $(git diff --name-only "$1")' -
 
 [svn]
 	followparent = true

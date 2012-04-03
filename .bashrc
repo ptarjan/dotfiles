@@ -61,7 +61,7 @@ alias gclean='for i in `git branch | sed "s/*//"`; do svn=`git show $i | grep sv
 alias restart_hphp='sudo su -l -c "sudo webserver restart"'
 alias restart_apache='sudo su -l -c "/var/www/scripts/pusher/pusher_agent reload"'
 alias vi='vim'
-alias cm='cmf --head --fix --apply-patches'
+alias cm='cmf --head --fix --apply-patches --only-new-errors'
 alias submit='arc diff --skip-sandcastle -m'
 
 function f(){ find . -iname "*$@*.*" | grep "$@"; }
@@ -84,7 +84,7 @@ _git_branches()
   return 0
 }        
          
-if [ -t 0 -a $TERM != 'screen' -a `hostname` == 'dev1115.snc6.facebook.com' ]; then
+if [ -t 0 -a $TERM != 'screen' -a `hostname` == 'dev4432.snc6.facebook.com' ]; then
   screen -RD default
 fi
 

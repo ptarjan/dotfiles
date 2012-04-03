@@ -256,3 +256,5 @@ set tags=tags;/
 "colorscheme solarized
 nmap <silent> ,f :FufFileWithCurrentBufferDir<cr>
 nmap <silent> ,b :FufBuffer<cr>
+" PHP comments
+set comments=s1:/*,mb:*,ex:*/
