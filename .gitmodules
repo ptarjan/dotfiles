@@ -82,3 +82,9 @@
 [submodule ".vim/bundle/Solarized"]
 	path = .vim/bundle/Solarized
 	url = https://github.com/vim-scripts/Solarized.git
+[submodule ".vim/bundle/trlp.vim"]
+	path = .vim/bundle/trlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule ".vim/bundle/mru.vim"]
+	path = .vim/bundle/mru.vim
+	url = https://github.com/vim-scripts/mru.vim.git

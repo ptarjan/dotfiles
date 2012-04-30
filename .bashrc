@@ -30,12 +30,14 @@ fi
 ESCAPED_HOME=`echo $HOME | sed "s:/:\\\\\\/:g"`
 
 PS1='\[\033[0;33m\]\t\[\033[0;0m\] \[\033[${PROMPT_COLOR}\]\u@\h\[\033[0;0m\]:`pwd | sed "s/${ESCAPED_HOME}/~/" | sed "s/^.*\/\(.*\)\(\/.*\)\(\/.*\)$/\1\2\3/"`$(__git_ps1 " (%s)")\$ '
+# http://jonisalonen.com/2012/your-bash-prompt-needs-this/
+PS1="\[\033[G\]$PS1"
 
 EDITOR=vim; export EDITOR
 
 # Aliases
 alias arc='/home/engshare/devtools/arcanist/bin/arc'
-alias tbgs='tbgs --forcedir "~/www"'
+alias tbgs='tbgs --forcedir "."'
 alias s='scan'
 alias g='git'
 alias cleanup='find . -type f -name "._*" -exec rm {} \;'
@@ -62,7 +64,7 @@ alias restart_hphp='sudo su -l -c "sudo webserver restart"'
 alias restart_apache='sudo su -l -c "/var/www/scripts/pusher/pusher_agent reload"'
 alias vi='vim'
 alias cm='cmf --head --fix --apply-patches --only-new-errors'
-alias submit='arc diff --skip-sandcastle -m'
+alias submit='arc diff --apply-patches --amend-all --excuse "This is a completely valid excuse" --verbatim'
 
 function f(){ find . -iname "*$@*.*" | grep "$@"; }
 

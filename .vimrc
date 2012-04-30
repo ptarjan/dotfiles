@@ -247,6 +247,8 @@ endif
 " ___________________
 "
 
+set expandtab
+
 " search full path for tags
 set tags=tags;/
 
