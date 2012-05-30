@@ -36,8 +36,8 @@ EDITOR=vim; export EDITOR
 # Aliases
 alias arc='/home/engshare/devtools/arcanist/bin/arc'
 alias tbgs='tbgs --forcedir "~/www"'
-alias s='scan'
 alias g='git'
+alias ls='ls -G'
 alias cleanup='find . -type f -name "._*" -exec rm {} \;'
 alias tail1s='tail -f ~/logs/error_log_ptarjan | pretty | grep error | grep -v "error.php" | grep -v "#1"'
 alias tail1='tail -f ~/logs/error_log_ptarjan | pretty'
@@ -138,3 +138,5 @@ if [ -f "${SSH_ENV}" ]; then
 else
      start_agent;
 fi 
+
+PATH=/usr/local/bin:$PATH:/usr/local/sbin
