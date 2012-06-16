@@ -84,3 +84,5 @@
 	stat = true
 [gc]
 	auto = 0
+[credential]
+	helper = osxkeychain
