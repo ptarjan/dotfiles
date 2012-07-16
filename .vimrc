@@ -258,5 +258,23 @@ set tags=tags;/
 "colorscheme solarized
 nmap <silent> ,f :FufFileWithCurrentBufferDir<cr>
 nmap <silent> ,b :FufBuffer<cr>
+
 " PHP comments
 set comments=s1:/*,mb:*,ex:*/
+
+" Ryan's crazy jk crazy escape
+inoremap jk <esc>
+inoremap <esc> <nop>
+
+" Enter command mode by pressing ; instead of :
+noremap ; :
+
+" Window nav
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" jk should scroll by actual lines
+nnoremap <silent> j gj
+nnoremap <silent> k gk
