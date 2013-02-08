@@ -100,12 +100,6 @@ else
   map ,e :tabe <C-R>=expand("%:p:h") . "\\" <CR>
 endif
 
-" Clear Search Hdark
-nmap <silent> <C-h> :silent noh<CR>
-
-" Word-Wrap Mode
-map <f9> :set textwidth=72 | normal }j<CR>
-
 " Hilight 80+ cols
 map ,8 /\%>80v.\+<CR>
 
@@ -200,46 +194,15 @@ autocmd BufNewFile,BufRead *.html,*.htm  call s:SelectHTML()
 " disable automatic folding in php
 let g:DisableAutoPHPFolding = 1
 
-" git commit
-au BufRead,BufNewFile COMMIT_EDITMSG call SplitGitShow()
-function! SplitGitShow()
-  let mode = "show"
-  call cursor(1,1)
-  let reset_line = search('^# *(use "git reset ')
-  if reset_line != 0
-  endif
-    let matches = matchlist(getline("."), '# *(use "git reset \(HEAD\^\?1\?\) ')
-    if len(matches) > 1 && len(matches[1])
-      let mode = "cached"
-      let base = matches[1]
-    endif
-  vnew
-  set filetype=git
-  set buftype=nofile
-  if mode == "show"
-    silent read !git show
-  elseif mode == "cached"
-    execute "silent read !git diff --cached " . base
-  else
-    silent read !echo "oops"
-  endif
-  normal ggdd
-  execute "normal \<C-w>\h"
-  normal %s/Reviewers: /Reviewers: jcain, rhe, naitik, caseymrm/
-  normal gg
-endfunction
-
 " FB STUFF
-if hostname() =~# "^[a-z][a-z]*[0-9][0-9]*\.snc[0-9]\.facebook\.com$"
+if hostname() =~# "^[a-z][a-z]*[0-9][0-9]*\.ash[0-9]\.facebook\.com$"
   let g:on_dev = 1
 else
   let g:on_dev = 0
 endif
 
 if g:on_dev
-  source /home/engshare/admin/scripts/vim/biggrep.vim
-  source /home/engshare/admin/scripts/vim/php-doc.vim
-  noremap <C-\> :TBGW<CR>
+  source $ADMIN_SCRIPTS/master.vimrc
 endif
 
 " ___________________
@@ -278,3 +241,6 @@ noremap <C-l> <C-w>l
 " jk should scroll by actual lines
 nnoremap <silent> j gj
 nnoremap <silent> k gk
+
+" Strip trailing whitespace
+autocmd BufWritePre *.php :%s/\s\+$//e

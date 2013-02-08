@@ -34,26 +34,23 @@
 	bb = bisect bad
 	bg = bisect good
 	br = branch
-	castle = !git push -f ssh://sandcastle.facebook.com/data/git/tfb HEAD:refs/users/`whoami`
-	ci = commit
-	co = checkout
-	cp = cherry-pick
 	gr = grep -i
-	incr = commit --amend -C HEAD
-	plus = commit --amend -a -C HEAD
-	sh = !git-sh
+	ca = commit --amend -a -C HEAD
+	co = checkout
 	st = status
-	su = status -uno
         di = diff
         dm = !git log -p -w --reverse HEAD...`git merge-base HEAD master`
         edit = !$EDITOR `git diff HEAD^ --name-only`
         gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -d || exit 0
-        gcbr2 = !for branch in `git for-each-ref --format='%(refname:short)' refs/heads`; do if git show -s $branch | grep 'git-svn-id:'; then echo git branch -D $branch; fi; done
+        gcbr2 = "!git for-each-ref --format='%(refname:short)' refs/heads | xargs -I % sh -c 'if git show -s % | grep 'git-svn-id:' > /dev/null; then git branch -D %; fi'"
+        #gcbr2 = !for branch in `git for-each-ref --format='%(refname:short)' refs/heads`\; do if git show -s $branch | grep 'git-svn-id:'\; then echo git branch -D $branch\; fi\; done
+        rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git r; git ra; git reset --hard; git clean -f; git clean -fdx'"
         n = checkout trunk -b
-        r = rebase trunk
+        r = !git fetch && git rebase
+        s = svn dcommit
+        rc = !git add . && git rebase --continue
+        ra = rebase --abort
         rbi = rebase -i
-        rbit = !git rebase -i `git merge-base HEAD git-svn`
-        rc = rebase --continue
         vim = !bash -c 'vim $(git diff --name-only "$1")' -
 
 [svn]
@@ -63,8 +60,8 @@
 [commit]
         # template = /home/ptarjan/admin/scripts/templates/git-commit-template.txt
 [user]
-	name = Paul Tarjan
-	email = github@paulisageek.com
+	name = ptarjan
+	email = ptarjan@fb.com
 [log]
 	date = relative
 [blame]

@@ -31,13 +31,13 @@ ESCAPED_HOME=`echo $HOME | sed "s:/:\\\\\\/:g"`
 
 PS1='\[\033[0;33m\]\t\[\033[0;0m\] \[\033[${PROMPT_COLOR}\]\u@\h\[\033[0;0m\]:`pwd | sed "s/${ESCAPED_HOME}/~/" | sed "s/^.*\/\(.*\)\(\/.*\)\(\/.*\)$/\1\2\3/"`$(__git_ps1 " (%s)")\$ '
 # http://jonisalonen.com/2012/your-bash-prompt-needs-this/
-PS1="\[\033[G\]$PS1"
+# PS1="\[\033[G\]$PS1"
 
 EDITOR=vim; export EDITOR
 
 # Aliases
 alias arc='/home/engshare/devtools/arcanist/bin/arc'
-alias tbgs='tbgs --forcedir "."'
+alias tbgs='tbgs -c --forcedir "."'
 alias s='scan'
 alias g='git'
 alias cleanup='find . -type f -name "._*" -exec rm {} \;'
@@ -76,7 +76,7 @@ if [ -f /mnt/vol/hive/dis/lib/utils/hive.include ]; then
 fi
 
 shopt -s progcomp
-       
+
 _git_branches()
 {
   local curw
@@ -84,11 +84,13 @@ _git_branches()
   curw=${COMP_WORDS[COMP_CWORD]}
   COMPREPLY=($(compgen -W "`git branch 2> /dev/null | cut -c 3-`" -- "$curw"))
   return 0
-}        
-         
-if [ -t 0 -a $TERM != 'screen' -a `hostname` == 'dev4432.snc6.facebook.com' ]; then
-  screen -RD default
-fi
+}
+
+#if [ -t 0 -a $TERM != 'screen' -a `hostname` == 'dev1399.prn1.facebook.com' ]; then
+# if [ -t 0 -a $TERM != 'screen' -a `hostname` == 'dev4432.snc6.facebook.com' ]; then
+#if [ -t 0 -a $TERM != 'screen' -a `hostname` == 'dev002.ash4.facebook.com' ]; then
+# screen -RD default
+#fi
 
 # autocomplete ssh
 rhosts=localhost
@@ -122,12 +124,12 @@ export PYTHONSTARTUP
 SSH_ENV="$HOME/.ssh/environment"
 
 function start_agent {
-     echo "Initialising new SSH agent..."
-     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-     echo succeeded
-     chmod 600 "${SSH_ENV}"
-     . "${SSH_ENV}" > /dev/null
-     /usr/bin/ssh-add;
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    # /usr/bin/ssh-add;
 }
 
 # Source SSH settings, if applicable
@@ -140,4 +142,12 @@ if [ -f "${SSH_ENV}" ]; then
      }
 else
      start_agent;
-fi 
+fi
+
+# HPHP compiling
+export USE_HHVM=1
+export DEBUG=1
+export OUTDIR_BY_TYPE=1
+export HPHP_HOME=~/hphp/
+export HPHP_FACEBOOK_WWW=~/www/
+alias make='make -j'
