@@ -88,3 +88,6 @@
 [submodule ".vim/bundle/mru.vim"]
 	path = .vim/bundle/mru.vim
 	url = https://github.com/vim-scripts/mru.vim.git
+[submodule ".vim/bundle/javascript-indent"]
+	path = .vim/bundle/javascript-indent
+	url = https://github.com/vim-scripts/JavaScript-Indent.git

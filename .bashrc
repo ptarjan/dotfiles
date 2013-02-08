@@ -37,9 +37,9 @@ EDITOR=vim; export EDITOR
 
 # Aliases
 alias arc='/home/engshare/devtools/arcanist/bin/arc'
-alias tbgs='tbgs -c --forcedir "."'
-alias s='scan'
+alias tbgs='tbgs --forcedir "~/www"'
 alias g='git'
+alias ls='ls -G'
 alias cleanup='find . -type f -name "._*" -exec rm {} \;'
 alias tail1s='tail -f ~/logs/error_log_ptarjan | pretty | grep error | grep -v "error.php" | grep -v "#1"'
 alias tail1='tail -f ~/logs/error_log_ptarjan | pretty'
@@ -151,3 +151,5 @@ export OUTDIR_BY_TYPE=1
 export HPHP_HOME=~/hphp/
 export HPHP_FACEBOOK_WWW=~/www/
 alias make='make -j'
+
+PATH=/usr/local/bin:$PATH:/usr/local/sbin

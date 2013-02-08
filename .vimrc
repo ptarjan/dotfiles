@@ -244,3 +244,13 @@ nnoremap <silent> k gk
 
 " Strip trailing whitespace
 autocmd BufWritePre *.php :%s/\s\+$//e
+
+nmap ,f :FufFileWithCurrentBufferDir
+nmap ,b :FufBuffer
+nmap ,t :FufTaggedFile
+
+set tabstop=2
+
+" http://stackoverflow.com/questions/7797593/highlighting-more-than-80-characters-with-a-non-standard-colorscheme
+highlight OverLength ctermbg=red ctermfg=white guibg=#59292
+match OverLength /\%81v.\+/
