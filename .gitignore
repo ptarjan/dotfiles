@@ -1,5 +1,5 @@
-/tags
 .NERDTreeBookmarks
+.aptitude
 .arcrc
 .bash_history
 .cache
@@ -44,6 +44,7 @@ local
 logs
 other-git
 public_html
+tags
 tmp
 www
 www-git
