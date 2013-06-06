@@ -38,27 +38,29 @@
 	ca = commit --amend -a -C HEAD
 	co = checkout
 	st = status
-        di = diff
-        dm = !git log -p -w --reverse HEAD...`git merge-base HEAD master`
-        edit = !$EDITOR `git diff HEAD^ --name-only`
-        gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -d || exit 0
-        gcbr2 = "!git for-each-ref --format='%(refname:short)' refs/heads | xargs -I % sh -c 'if git show -s % | grep 'git-svn-id:' > /dev/null; then git branch -D %; fi'"
-        #gcbr2 = !for branch in `git for-each-ref --format='%(refname:short)' refs/heads`\; do if git show -s $branch | grep 'git-svn-id:'\; then echo git branch -D $branch\; fi\; done
-        rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git r; git ra; git reset --hard; git clean -f; git clean -fdx'"
-        n = checkout trunk -b
-        r = !git fetch && git rebase
-        s = svn dcommit
-        rc = !git add . && git rebase --continue
-        ra = rebase --abort
-        rbi = rebase -i
-        vim = !bash -c 'vim $(git diff --name-only "$1")' -
+  di = diff
+  dm = !git log -p -w --reverse HEAD...`git merge-base HEAD master`
+  edit = !$EDITOR `git diff HEAD^ --name-only`
+  gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -d || exit 0
+  gcbr2 = "!git for-each-ref --format='%(refname:short)' refs/heads | xargs -I % sh -c 'if git show -s % | grep 'git-svn-id:' > /dev/null; then git branch -D %; fi'"
+  #gcbr2 = !for branch in `git for-each-ref --format='%(refname:short)' refs/heads`\; do if git show -s $branch | grep 'git-svn-id:'\; then echo git branch -D $branch\; fi\; done
+  rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git r; git ra; git reset --hard; git clean -f; git clean -fdx'"
+  n = checkout origin/master -b
+  r = rebase
+  s = svn dcommit
+  rc = !git add . && git rebase --continue
+  ra = rebase --abort
+  rbi = rebase -i
+  vim = !bash -c 'vim $(git diff --name-only "$1")' -
+  u = branch --set-upstream-to=origin/master
+  land = !git fetch && arc amend && git u && git rebase && git push && git co master && git r && git gcbr
 
 [svn]
 	followparent = true
-        rmdir = true
+  rmdir = true
 
 [commit]
-        # template = /home/ptarjan/admin/scripts/templates/git-commit-template.txt
+  # template = /home/ptarjan/admin/scripts/templates/git-commit-template.txt
 [user]
 	name = ptarjan
 	email = ptarjan@fb.com
@@ -70,8 +72,6 @@
 	renames = true
 	mnemonicprefix = true
 	# external = /home/ptarjan/bin/git/colordiff-wrapper.sh
-[apply]
-	whitespace = strip
 [merge]
 	tool = emerge
 [status]

@@ -1,5 +1,9 @@
 # .bashrc
 
+if [ -z "$PS1" ]; then
+  return
+fi
+
 export ADMIN_SCRIPTS='/home/engshare/admin/scripts'
 if [[ -d "$ADMIN_SCRIPTS" ]]
 then
@@ -148,8 +152,9 @@ fi
 export USE_HHVM=1
 export DEBUG=1
 export OUTDIR_BY_TYPE=1
-export HPHP_HOME=~/hphp/
+export HPHP_HOME=~/fbcode/
 export HPHP_FACEBOOK_WWW=~/www/
-alias make='make -j'
+alias m='fbmake --fast dbg -j'
+alias zend="/home/engshare/externals/cpp/hphp/centos-dev/php/bin/php"
 
-PATH=/usr/local/bin:$PATH:/usr/local/sbin
+PATH=~/bin/:/usr/local/bin:$PATH:/usr/local/sbin

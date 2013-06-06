@@ -245,12 +245,15 @@ nnoremap <silent> k gk
 " Strip trailing whitespace
 autocmd BufWritePre *.php :%s/\s\+$//e
 
-nmap ,f :FufFileWithCurrentBufferDir
-nmap ,b :FufBuffer
-nmap ,t :FufTaggedFile
+nmap ,f :FufFileWithCurrentBufferDir<CR>
+nmap ,b :FufBuffer<CR>
+nmap ,t :FufTaggedFile<CR>
 
 set tabstop=2
 
 " http://stackoverflow.com/questions/7797593/highlighting-more-than-80-characters-with-a-non-standard-colorscheme
 highlight OverLength ctermbg=red ctermfg=white guibg=#59292
 match OverLength /\%81v.\+/
+
+" http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
