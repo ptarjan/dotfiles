@@ -155,6 +155,5 @@ export OUTDIR_BY_TYPE=1
 export HPHP_HOME=~/fbcode/
 export HPHP_FACEBOOK_WWW=~/www/
 alias m='fbmake --fast dbg -j'
-alias zend="/home/engshare/externals/cpp/hphp/centos-dev/php/bin/php"
 
 PATH=~/bin/:/usr/local/bin:$PATH:/usr/local/sbin

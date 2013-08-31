@@ -9,4 +9,7 @@ fi
 
 shopt -s checkwinsize
 
+source /home/engshare/admin/scripts/ssh/manage_agent.sh
+
 unset USERNAME
+source "$ADMIN_SCRIPTS"/ssh/manage_rootcanal.sh

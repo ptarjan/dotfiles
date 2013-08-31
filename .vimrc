@@ -257,3 +257,5 @@ match OverLength /\%81v.\+/
 
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
+let g:ctrlp_root_markers = ['.ctrlp']
