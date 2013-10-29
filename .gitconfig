@@ -44,7 +44,7 @@
   gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -d || exit 0
   gcbr2 = "!git for-each-ref --format='%(refname:short)' refs/heads | xargs -I % sh -c 'if git show -s % | grep 'git-svn-id:' > /dev/null; then git branch -D %; fi'"
   #gcbr2 = !for branch in `git for-each-ref --format='%(refname:short)' refs/heads`\; do if git show -s $branch | grep 'git-svn-id:'\; then echo git branch -D $branch\; fi\; done
-  rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git r; git ra; git reset --hard; git clean -f; git clean -fdx'"
+  rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git u; git r; git ra; git reset --hard; git clean -f; git clean -fdx'"
   n = checkout origin/master -b
   r = rebase
   s = svn dcommit
@@ -53,7 +53,7 @@
   rbi = rebase -i
   vim = !bash -c 'vim $(git diff --name-only "$1")' -
   u = branch --set-upstream-to=origin/master
-  land = !git fetch && arc amend && git u && git rebase && git push && git co master && git r && git gcbr
+  land = !git fetch && arc amend && git u && git rebase && git push --set-upstream origin HEAD:master && git co master && git r && git gcbr
 
 [svn]
 	followparent = true
@@ -82,5 +82,7 @@
 	stat = true
 [gc]
 	auto = 0
-[credential]
-	helper = osxkeychain
+#[credential]
+#	helper = osxkeychain
+[push]
+	default = current

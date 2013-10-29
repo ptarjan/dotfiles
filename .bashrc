@@ -72,13 +72,6 @@ alias submit='arc diff --apply-patches --amend-all --excuse "This is a completel
 
 function f(){ find . -iname "*$@*.*" | grep "$@"; }
 
-# Python environment vars
-export HIVE_RLWRAP=true
-if [ -f /mnt/vol/hive/dis/lib/utils/hive.include ]; then
-  source /mnt/vol/hive/dis/lib/utils/hive.include
-  hive_select_release silver
-fi
-
 shopt -s progcomp
 
 _git_branches()
@@ -124,29 +117,6 @@ export PYTHONSTARTUP
 # else
 #   export TERM='xterm-color'
 # fi
-
-SSH_ENV="$HOME/.ssh/environment"
-
-function start_agent {
-    echo "Initialising new SSH agent..."
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    echo succeeded
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-    # /usr/bin/ssh-add;
-}
-
-# Source SSH settings, if applicable
-
-if [ -f "${SSH_ENV}" ]; then
-     . "${SSH_ENV}" > /dev/null
-     #ps ${SSH_AGENT_PID} doesn't work under cywgin
-     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-         start_agent;
-     }
-else
-     start_agent;
-fi
 
 # HPHP compiling
 export USE_HHVM=1
