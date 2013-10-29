@@ -94,3 +94,6 @@
 [submodule ".vim/bundle/Markdown"]
 	path = .vim/bundle/Markdown
 	url = https://github.com/vim-scripts/Markdown
+[submodule ".vim/bundle/Cpp11-Syntax-Support"]
+	path = .vim/bundle/Cpp11-Syntax-Support
+	url = https://github.com/vim-scripts/Cpp11-Syntax-Support.git
