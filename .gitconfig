@@ -82,9 +82,7 @@
 	stat = true
 [gc]
 	auto = 0
-#[credential]
-#	helper = osxkeychain
-#[push]
-#	default = current
-[http]
-  proxy = fwdproxy.any:8080
+[credential]
+	helper = osxkeychain
+[push]
+	default = simple
