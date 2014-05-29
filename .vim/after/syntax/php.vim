@@ -1,7 +1,7 @@
 " Vim syntax after-file
 " Language:     XHP
 " Maintainer:   Eugene Zarakhovsky <eugenez@fb.com>
-" Filenames:    *.php
+" Filenames:    *.php *.hh
 if exists('b:current_syntax')
   let s:current_syntax=b:current_syntax
   unlet b:current_syntax
