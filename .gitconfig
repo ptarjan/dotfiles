@@ -84,5 +84,5 @@
 	auto = 0
 #[credential]
 #	helper = osxkeychain
-[push]
-	default = current
+#[push]
+#	default = current
