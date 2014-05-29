@@ -259,3 +259,7 @@ match OverLength /\%81v.\+/
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 let g:ctrlp_root_markers = ['.ctrlp']
+
+" line up params
+set cindent
+set cino=(0<Enter>
