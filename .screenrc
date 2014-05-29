@@ -88,3 +88,7 @@ termcapinfo xterm*|xterms|xs|rxvt ti@:te@
 #   in the next window, and then open mutt and tail in windows 8 and 9
 #   respectively.
 #
+
+
+# for ssh-agent / screen support
+setenv SSH_AUTH_SOCK "/tmp/$USER-ssh_auth_sock"
