@@ -11,6 +11,8 @@ then
   source "$ADMIN_SCRIPTS"/master.shellrc
 fi
 
+# source "$ADMIN_SCRIPTS"/ssh/manage_rootcanal.sh
+
 #
 # bash-specific things below
 #
@@ -69,6 +71,7 @@ alias restart_apache='sudo su -l -c "/var/www/scripts/pusher/pusher_agent reload
 alias vi='vim'
 alias cm='cmf --head --fix --apply-patches --only-new-errors'
 alias submit='arc diff --apply-patches --amend-all --excuse "This is a completely valid excuse" --verbatim'
+alias f='fbmake --fast'
 
 function f(){ find . -iname "*$@*.*" | grep "$@"; }
 
@@ -119,10 +122,7 @@ export PYTHONSTARTUP
 # fi
 
 # HPHP compiling
-export USE_HHVM=1
-export DEBUG=1
-export OUTDIR_BY_TYPE=1
-export HPHP_HOME=~/fbcode/
+#export HPHP_HOME=~/fbcode/
 export HPHP_FACEBOOK_WWW=~/www/
 alias m='fbmake --fast dbg -j'
 
