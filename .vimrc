@@ -47,7 +47,7 @@ set nofoldenable
 
 " pathogen
 call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 syntax on
 filetype plugin indent on
@@ -83,9 +83,6 @@ nnoremap ` '
 " QuickFix
 map <silent> <C-n> :cn<CR>
 map <silent> <C-p> :cp<CR>
-
-" Spell Check
-map <silent> <S-s> :set spell!<CR>
 
 " Tabs
 nmap <silent> <C-y> :tabnew<cr>
@@ -258,8 +255,33 @@ match OverLength /\%81v.\+/
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-let g:ctrlp_root_markers = ['.ctrlp']
+" Controll p
+" Only search to current working dir
+let g:ctrlp_working_path_mode = 'a'
 
 " line up params
 set cindent
 set cino=(0<Enter>
+
+" <mwang>
+nnoremap <leader>p  :setl paste!<CR>:setl paste?<CR>
+nnoremap <leader>s  :setl spell!<CR>:setl spell?<CR>
+nnoremap <leader>v  <C-w>v
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-b> <C-Left>
+cnoremap <C-f> <C-Right>
+cnoremap <C-d> <Delete>
+cnoremap <C-k> <C-\>estrpart(getcmdline(), 0, getcmdpos() - 1)<CR>
+
+" Fugitive - Leader mappings.
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gg :Ggrep<Space>
+nnoremap <leader>gl :Glog<CR><CR><CR>:copen<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gh :Gbrowse<CR>
+nnoremap <leader>gh :Gbrowse<CR>
+" </mwang>

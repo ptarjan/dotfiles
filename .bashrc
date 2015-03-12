@@ -11,7 +11,7 @@ then
   source "$ADMIN_SCRIPTS"/master.shellrc
 fi
 
-# source "$ADMIN_SCRIPTS"/ssh/manage_rootcanal.sh
+source /etc/profile.d/manage_rootcanal.sh
 
 #
 # bash-specific things below
@@ -42,9 +42,6 @@ PS1='\[\033[0;33m\]\t\[\033[0;0m\] \[\033[${PROMPT_COLOR}\]\u@\h\[\033[0;0m\]:`p
 EDITOR=vim; export EDITOR
 
 # Aliases
-alias arc='/home/engshare/devtools/arcanist/bin/arc'
-alias tbgs='tbgs --forcedir "~/www"'
-alias g='git'
 alias ls='ls -G'
 alias cleanup='find . -type f -name "._*" -exec rm {} \;'
 alias tail1s='tail -f ~/logs/error_log_ptarjan | pretty | grep error | grep -v "error.php" | grep -v "#1"'
@@ -127,3 +124,5 @@ export HPHP_FACEBOOK_WWW=~/www/
 alias m='fbmake --fast dbg -j'
 
 PATH=~/bin/:/usr/local/bin:$PATH:/usr/local/sbin
+HISTSIZE=130000 HISTFILESIZE=-1
+HISTSIZE=130000 HISTFILESIZE=-1

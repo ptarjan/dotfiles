@@ -97,3 +97,6 @@
 [submodule ".vim/bundle/Cpp11-Syntax-Support"]
 	path = .vim/bundle/Cpp11-Syntax-Support
 	url = https://github.com/vim-scripts/Cpp11-Syntax-Support.git
+[submodule ".vim/bundle/vim-hack"]
+	path = .vim/bundle/vim-hack
+	url = git://github.com/hhvm/vim-hack.git

@@ -86,3 +86,5 @@
 #	helper = osxkeychain
 #[push]
 #	default = current
+[http]
+  proxy = fwdproxy.any:8080
