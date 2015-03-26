@@ -118,4 +118,8 @@ fi
 # android
 export ANDROID_HOME=`brew --prefix android`
 
+# more history
+HISTSIZE=130000 HISTFILESIZE=-1
+
 PATH=~/bin:/usr/local/bin:$PATH:/usr/local/sbin
+
