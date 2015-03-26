@@ -43,32 +43,7 @@ EDITOR=vim; export EDITOR
 
 # Aliases
 alias ls='ls -G'
-alias cleanup='find . -type f -name "._*" -exec rm {} \;'
-alias tail1s='tail -f ~/logs/error_log_ptarjan | pretty | grep error | grep -v "error.php" | grep -v "#1"'
-alias tail1='tail -f ~/logs/error_log_ptarjan | pretty'
-alias ut='cd ~/www/scripts/unittest/bin'
-alias uta='./run_all_unittests --test-root ../tests/streams'
-alias gs='git status'
-#alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
-alias gcom='git checkout master; git rebase trunk'
-alias grit='git rebase -i trunk'
-alias gco='git checkout'
-alias gdbr='git branch -d'
-alias gcam='git commit -am'
-alias gd='git diff'
-alias gd1='git diff HEAD~1'
-alias gcob='git checkout -b'
-alias grt='git rebase trunk'
-alias gsh='git show --pretty=short --stat'
-alias gca='git commit --amend -CHEAD -a'
-alias gclean='git branch -d `git branch | grep -v "*"`'
-alias gclean='for i in `git branch | sed "s/*//"`; do svn=`git show $i | grep svn-id`; if [ $? -eq 0 ]; then git branch -d $i; fi; done'
-alias restart_hphp='sudo su -l -c "sudo webserver restart"'
-alias restart_apache='sudo su -l -c "/var/www/scripts/pusher/pusher_agent reload"'
 alias vi='vim'
-alias cm='cmf --head --fix --apply-patches --only-new-errors'
-alias submit='arc diff --apply-patches --amend-all --excuse "This is a completely valid excuse" --verbatim'
-alias f='fbmake --fast'
 
 function f(){ find . -iname "*$@*.*" | grep "$@"; }
 
