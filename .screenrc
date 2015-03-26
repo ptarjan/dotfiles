@@ -20,7 +20,8 @@ autodetach on
 # turn visual bell off
 vbell off
 
-defscrollback 30000
+# define a bigger scrollback, default is 100 lines
+defscrollback 100000
 
 # ignore case in searches
 ignorecase on
