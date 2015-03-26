@@ -119,10 +119,14 @@ export PYTHONSTARTUP
 # fi
 
 # HPHP compiling
-#export HPHP_HOME=~/fbcode/
 export HPHP_FACEBOOK_WWW=~/www/
 alias m='fbmake --fast dbg -j'
 
-PATH=~/bin/:/usr/local/bin:$PATH:/usr/local/sbin
-HISTSIZE=130000 HISTFILESIZE=-1
-HISTSIZE=130000 HISTFILESIZE=-1
+# keep lots of history
+HISTSIZE=130000
+HISTFILESIZE=-1
+
+# android
+export ANDROID_HOME=`brew --prefix android`
+
+PATH=~/bin:/usr/local/bin:$PATH:/usr/local/sbin
