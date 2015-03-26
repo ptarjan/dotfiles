@@ -58,12 +58,6 @@ _git_branches()
   return 0
 }
 
-#if [ -t 0 -a $TERM != 'screen' -a `hostname` == 'dev1399.prn1.facebook.com' ]; then
-# if [ -t 0 -a $TERM != 'screen' -a `hostname` == 'dev4432.snc6.facebook.com' ]; then
-#if [ -t 0 -a $TERM != 'screen' -a `hostname` == 'dev002.ash4.facebook.com' ]; then
-# screen -RD default
-#fi
-
 # autocomplete ssh
 rhosts=localhost
 if [ -f ~/.ssh/known_hosts ] ; then
