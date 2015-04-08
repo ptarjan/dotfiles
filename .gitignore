@@ -1,9 +1,12 @@
 .CFUserTextEncoding
 .DS_Store
 .bash_history
+.cache
 .dropbox/
 .histfile
 .ssh
+.vim/bundle/
+.viminfo
 .vnc
 /Applications/
 /Desktop/

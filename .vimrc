@@ -6,7 +6,6 @@ set autoindent
 "set backupdir=~/.vim/backup
 set bs=2
 set clipboard=unnamed
-set directory=~/.vim/swaps
 set encoding=utf-8
 set hlsearch
 set ignorecase smartcase
@@ -45,8 +44,51 @@ let mapleader = ","
 set wildignore+=*.o,*.obj,.git,.svn,.hg,*.gif,*.png,*.jpg,*.zip,*.tgz,*.tar.gz,*.tar.bz2,*.bmp,*.swf,*.eps,*.tiff,*.pdf,*.ps,*.ai,*.avi,*.ico,*.psd,*.docx,*.doc
 set nofoldenable
 
-syntax on
+" Vundle
+" Make sure you do this first: 
+"
+"   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"
+" Then on a new system do
+"
+"   vim +PluginInstall +qall
+"
+
+set nocompatible
+filetype off
+
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Git wrapper
+Plugin 'tpope/vim-fugitive'
+" The directory on the left
+Plugin 'scrooloose/nerdtree'
+" Syntax checking
+Plugin 'scrooloose/syntastic'
+" Easy surounding
+Plugin 'tpope/vim-surround'
+" Control P
+Plugin 'kien/ctrlp.vim'
+" Solarized colors
+Plugin 'altercation/vim-colors-solarized'
+" Status line
+Plugin 'bling/vim-airline'
+" Better comments
+Plugin 'scrooloose/nerdcommenter'
+" Better JS
+Plugin 'pangloss/vim-javascript'
+" Autocomplete
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()
 filetype plugin indent on
+syntax on
 
 colorscheme daaku
 
