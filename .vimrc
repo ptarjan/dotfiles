@@ -69,8 +69,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 " The directory on the left
 Plugin 'scrooloose/nerdtree'
-" Syntax checking
-Plugin 'scrooloose/syntastic'
 " Easy surounding
 Plugin 'tpope/vim-surround'
 " Control P
@@ -89,6 +87,22 @@ filetype plugin indent on
 syntax on
 
 colorscheme daaku
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+"
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" These screw up ionic files so badly
+let g:syntastic_html_checkers=['']
+
+" YouCompleteMe
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
 
 " Often mis typed commands
 command! Q  q
@@ -168,11 +182,6 @@ autocmd BufNewFile,BufRead *.html,*.htm  call s:SelectHTML()
 " disable automatic folding in php
 let g:DisableAutoPHPFolding = 1
 
-" ___________________
-" ptarjan's additions
-" ___________________
-"
-
 set expandtab
 
 " search full path for tags
@@ -219,7 +228,7 @@ match OverLength /\%121v.\+/
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-" Controll p
+" Control p
 " Only search to current working dir
 let g:ctrlp_working_path_mode = 'a'
 
