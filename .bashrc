@@ -16,8 +16,6 @@ shopt -s checkwinsize
 
 shopt -s progcomp
 
-source ~/.bashrc_git_custom_completion
-
 PROMPT_COLOR='0;32m'
 if [ ${UID} -eq 0 ]; then
   PROMPT_COLOR='0;31m'
