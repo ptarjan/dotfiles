@@ -22,6 +22,10 @@ if [ ${UID} -eq 0 ]; then
 fi
 
 ESCAPED_HOME=`echo $HOME | sed "s:/:\\\\\\/:g"`
+GIT_PROMPT=/Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+if [ -f $GIT_PROMPT ]; then
+  source $GIT_PROMPT
+fi
 
 PS1='\[\033[0;33m\]\t\[\033[0;0m\] \[\033[${PROMPT_COLOR}\]\u@\h\[\033[0;0m\]:`pwd | sed "s/${ESCAPED_HOME}/~/" | sed "s/^.*\/\(.*\)\(\/.*\)\(\/.*\)$/\1\2\3/"`$(__git_ps1 " (%s)")\$ '
 # http://jonisalonen.com/2012/your-bash-prompt-needs-this/
