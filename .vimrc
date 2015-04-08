@@ -45,29 +45,10 @@ let mapleader = ","
 set wildignore+=*.o,*.obj,.git,.svn,.hg,*.gif,*.png,*.jpg,*.zip,*.tgz,*.tar.gz,*.tar.bz2,*.bmp,*.swf,*.eps,*.tiff,*.pdf,*.ps,*.ai,*.avi,*.ico,*.psd,*.docx,*.doc
 set nofoldenable
 
-" pathogen
-call pathogen#helptags()
-call pathogen#infect()
-
 syntax on
 filetype plugin indent on
 
 colorscheme daaku
-
-" CWD Sensitive Tags
-" let &tags=system("~/.vim/bin/find-tags")
-
-" GUI Font
-if has("gui_gtk")
-  set guifont=Monospace\ 11
-elseif has("macunix")
-  if has("gui_running")
-    set go-=T
-    set lines=37
-    set columns=151
-    set guifont=Menlo:h13
-  endif
-endif
 
 " Often mis typed commands
 command! Q  q
@@ -97,29 +78,8 @@ else
   map ,e :tabe <C-R>=expand("%:p:h") . "\\" <CR>
 endif
 
-" Hilight 80+ cols
-map ,8 /\%>80v.\+<CR>
-
 " Strip Trailing White-Space
 map <C-c> :%s/\s\+$//<CR>
-
-" Tag List
-" nmap <silent> T :TlistToggle<CR>
-
-" Nerd Tree
-nmap <silent> F :NERDTreeToggle<CR>
-
-" Align Shortcuts :: <space>, =, //, :
-map <f4> :Align w=  <CR>
-map <f5> :Align w= =<CR>
-map <f6> :Align w= //<CR>
-map <f7> :Align w= :<CR>
-map ,a :Align w=<space>
-
-" To tell what syntax highlighting group *that* is!
-map <F11> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-"map <silent> ,f :FufFile<cr>
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -135,34 +95,11 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-" custom file detects syntax files
-augroup filetypedetect
-  au BufNewFile,BufRead *.phpt set filetype=php
-augroup END
-
 " files in /tmp, like crontabs need this
 autocmd BufReadPost /tmp/* set backupcopy=yes
 
 " python world is 4 spaces
 au BufNewFile,BufRead *.py setlocal shiftwidth=4
-
-" clojure
-let g:vimclojure#HighlightBuiltins=1      " Highlight Clojure's builtins
-let g:vimclojure#ParenRainbow=1           " Rainbow parentheses'!
-
-" try to select a better mode based on file contents
-fun! s:SelectTXT()
-  let n = 1
-  while n < 50 && n < line("$")
-    " check for django
-    if getline(n) =~ '{%\s*\(extends\|block\|comment\|ssi\|if\|for\|blocktrans\)\>'
-      set ft=django
-      return
-    endif
-    let n = n + 1
-  endwhile
-endfun
-autocmd BufNewFile,BufRead *.txt  call s:SelectTXT()
 
 " also acceptable
 au BufNewFile,BufRead *.json	set filetype=javascript
@@ -191,17 +128,6 @@ autocmd BufNewFile,BufRead *.html,*.htm  call s:SelectHTML()
 " disable automatic folding in php
 let g:DisableAutoPHPFolding = 1
 
-" FB STUFF
-if hostname() =~# "^[a-z][a-z]*[0-9][0-9]*\.ash[0-9]\.facebook\.com$"
-  let g:on_dev = 1
-else
-  let g:on_dev = 0
-endif
-
-if g:on_dev
-  source $ADMIN_SCRIPTS/master.vimrc
-endif
-
 " ___________________
 " ptarjan's additions
 " ___________________
@@ -216,8 +142,6 @@ set tags=tags;/
 "syntax enable
 "set background=dark
 "colorscheme solarized
-nmap <silent> ,f :FufFileWithCurrentBufferDir<cr>
-nmap <silent> ,b :FufBuffer<cr>
 
 " PHP comments
 set comments=s1:/*,mb:*,ex:*/
@@ -240,7 +164,7 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 
 " Strip trailing whitespace
-autocmd BufWritePre *.php :%s/\s\+$//e
+autocmd BufWritePre *.php,*.js :%s/\s\+$//e
 
 nmap ,f :FufFileWithCurrentBufferDir<CR>
 nmap ,b :FufBuffer<CR>
