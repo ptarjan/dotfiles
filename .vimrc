@@ -75,8 +75,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
 " Control P
 Plugin 'kien/ctrlp.vim'
-" Solarized colors
-Plugin 'altercation/vim-colors-solarized'
 " Status line
 Plugin 'bling/vim-airline'
 " Better comments
