@@ -41,7 +41,6 @@
 .zsh-update
 .zsh_history
 /backup
-/bin
 /dead.letter
 /devtools
 /experimental_sgrep_lint

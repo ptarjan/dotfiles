@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Thrid arument is optional git grep, or else use arg 1
+if [ $# -eq 2 ]; then
+  git=$1;
+else
+  git=$3;
+fi
+
+# Files to change
+files=`git grep -l -I "$git"`
+
+# Do for loops splitting on newlines
+IFS=$'\n'
+
+for file in $files; do
+  # Lock the file so we can run many of these at the same time without corruption
+  lockfile=$file.lock
+  # The replace has 30 seconds before the file is auto-unlocked
+  lockfile -l 30 $lockfile
+
+  # Do the replace. I hope you didn't have any @ in your patterns
+  perl -p -i -e "s@$1@$2@g" $file
+
+  # Unlock, someone else can modify
+  rm -f $lockfile
+done
