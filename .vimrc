@@ -215,10 +215,6 @@ nnoremap <silent> k gk
 " Strip trailing whitespace
 autocmd BufWritePre *.php,*.js :%s/\s\+$//e
 
-nmap ,f :FufFileWithCurrentBufferDir<CR>
-nmap ,b :FufBuffer<CR>
-nmap ,t :FufTaggedFile<CR>
-
 set tabstop=2
 
 " http://stackoverflow.com/questions/7797593/highlighting-more-than-80-characters-with-a-non-standard-colorscheme
@@ -231,6 +227,8 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Control p
 " Only search to current working dir
 let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+nmap <C-p> :CtrlPMixed<CR>
 
 " line up params
 set cindent
