@@ -16,6 +16,7 @@ shopt -s checkwinsize
 
 shopt -s progcomp
 
+export CLICOLOR=1
 PROMPT_COLOR='0;32m'
 if [ ${UID} -eq 0 ]; then
   PROMPT_COLOR='0;31m'
