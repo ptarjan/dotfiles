@@ -1,4 +1,4 @@
-" ~/.vimrc    ::   Naitik Shah <naitik.shah@yahoo.com>
+" ~/.vimrc    ::   Paul Tarjan <vimrc@paulisageek.com>
 
 set rtp=~/.vim,$VIMRUNTIME
 set autoindent
