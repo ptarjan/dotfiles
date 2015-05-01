@@ -80,7 +80,7 @@ Plugin 'scrooloose/nerdcommenter'
 " Better JS
 Plugin 'pangloss/vim-javascript'
 " Autocomplete
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
 
 call vundle#end()
 filetype plugin indent on
@@ -99,9 +99,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " These screw up ionic files so badly
 let g:syntastic_html_checkers=['']
-
-" YouCompleteMe
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
 
 
 " Often mis typed commands
@@ -228,7 +225,7 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Only search to current working dir
 let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-nmap <C-p> :CtrlPMixed<CR>
+let g:ctrlp_cmd = 'CtrlPMixed'
 
 " line up params
 set cindent
