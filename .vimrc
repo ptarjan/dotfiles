@@ -81,6 +81,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'pangloss/vim-javascript'
 " Autocomplete
 Plugin 'ervandew/supertab'
+" Automatically open autocomplete thing
+Plugin 'AutoComplPop'
 
 call vundle#end()
 filetype plugin indent on
