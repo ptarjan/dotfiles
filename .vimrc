@@ -83,6 +83,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'ervandew/supertab'
 " Automatically open autocomplete thing
 Plugin 'AutoComplPop'
+" Syntax checking
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()
 filetype plugin indent on
@@ -95,13 +97,17 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 "
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " These screw up ionic files so badly
-let g:syntastic_html_checkers=['']
-
+let g:syntastic_html_checkers = ['']
+" I only want to use this one linter, not scss
+let g:syntastic_scss_checkers = ['scss_lint']
+" I like both
+let g:syntastic_javascript_checkers = ['jscs', 'jshint']
 
 " Often mis typed commands
 command! Q  q
@@ -219,6 +225,7 @@ set tabstop=2
 " http://stackoverflow.com/questions/7797593/highlighting-more-than-80-characters-with-a-non-standard-colorscheme
 highlight OverLength ctermbg=red ctermfg=white guibg=#59292
 match OverLength /\%121v.\+/
+set textwidth=120
 
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
