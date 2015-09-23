@@ -38,6 +38,8 @@
   rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git u; git r; git ra; git reset --hard; git clean -f; git clean -fdx'"
   n = checkout origin/master -b
   r = rebase
+  f = fetch
+  p = push
   s = svn dcommit
   rc = !git add . && git rebase --continue
   ra = rebase --abort
