@@ -85,6 +85,10 @@ Plugin 'ervandew/supertab'
 Plugin 'AutoComplPop'
 " Syntax checking
 Plugin 'scrooloose/syntastic'
+" Nicer QuickFix
+Bundle 'tpope/vim-unimpaired'
+" Sensible defaults
+Bundle 'tpope/vim-sensible'
 
 call vundle#end()
 filetype plugin indent on
