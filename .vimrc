@@ -269,5 +269,4 @@ nnoremap <leader>gg :Ggrep<Space>
 nnoremap <leader>gl :Glog<CR><CR><CR>:copen<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gh :Gbrowse<CR>
-nnoremap <leader>gh :Gbrowse<CR>
 " </mwang>
