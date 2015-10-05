@@ -79,16 +79,21 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
 " Better JS
 Plugin 'pangloss/vim-javascript'
-" Autocomplete
-Plugin 'ervandew/supertab'
-" Automatically open autocomplete thing
-Plugin 'AutoComplPop'
 " Syntax checking
 Plugin 'scrooloose/syntastic'
 " Nicer QuickFix
-Bundle 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-unimpaired'
 " Sensible defaults
-Bundle 'tpope/vim-sensible'
+Plugin 'tpope/vim-sensible'
+
+"" Autocomplete
+"Plugin 'ervandew/supertab'
+"" Automatically open autocomplete thing
+"Plugin 'AutoComplPop'
+" Autocomplete
+Plugin 'Valloric/YouCompleteMe'
+" Javascript Autocomplete
+Plugin 'marijnh/tern_for_vim'
 
 call vundle#end()
 filetype plugin indent on
