@@ -115,8 +115,15 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_html_checkers = ['']
 " I only want to use this one linter, not scss
 let g:syntastic_scss_checkers = ['scss_lint']
-" I like both
-let g:syntastic_javascript_checkers = ['jscs', 'jshint']
+" I like all
+let g:syntastic_javascript_checkers = ['jscs', 'jshint', 'eslint']
+
+" Location window
+nmap <C-n> :lnext<CR>
+nmap <C-p> :lprevious<CR>
+
+" YCM
+autocmd CompleteDone * pclose
 
 " Often mis typed commands
 command! Q  q
@@ -128,10 +135,6 @@ map Q :q<CR>
 " Remap ` to ' to use column in mark
 nnoremap ' `
 nnoremap ` '
-
-" QuickFix
-map <silent> <C-n> :cn<CR>
-map <silent> <C-p> :cp<CR>
 
 " Tabs
 nmap <silent> <C-y> :tabnew<cr>
