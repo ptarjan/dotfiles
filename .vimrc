@@ -172,9 +172,6 @@ autocmd BufReadPost /tmp/* set backupcopy=yes
 " python world is 4 spaces
 au BufNewFile,BufRead *.py setlocal shiftwidth=4
 
-" also acceptable
-au BufNewFile,BufRead *.json	set filetype=javascript
-
 " try to select a better html mode based on file contents
 fun! s:SelectHTML()
   let n = 0
