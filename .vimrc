@@ -249,6 +249,13 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 set cindent
 set cino=(0<Enter>
 
+" http://blog.mattcrampton.com/post/86216925656/move-vim-swp-files
+" Make sure to run 
+" mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
+set backupdir=~/.vim/backup_files//
+set directory=~/.vim/swap_files//
+set undodir=~/.vim/undo_files//
+
 " <mwang>
 nnoremap <leader>p  :setl paste!<CR>:setl paste?<CR>
 nnoremap <leader>s  :setl spell!<CR>:setl spell?<CR>
