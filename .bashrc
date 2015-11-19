@@ -68,7 +68,9 @@ else
 fi
 
 # android
-export ANDROID_HOME=`brew --prefix android`
+if hash brew 2>/dev/null; then
+  export ANDROID_HOME=`brew --prefix android`
+fi
 
 # more history
 HISTSIZE=130000 HISTFILESIZE=-1
