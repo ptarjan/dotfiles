@@ -27,6 +27,11 @@ GIT_PROMPT=/Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-pro
 if [ ! -f $GIT_PROMPT ]; then 
   GIT_PROMPT=~/.git-prompt.sh
 fi
+
+GIT_COMPLETION=/Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
+if [ -f $GIT_COMPLETION ]; then 
+  . $GIT_COMPLETION
+fi
   
 source $GIT_PROMPT
 
