@@ -32,7 +32,10 @@ GIT_COMPLETION=/Applications/Xcode.app/Contents/Developer/usr/share/git-core/git
 if [ -f $GIT_COMPLETION ]; then 
   . $GIT_COMPLETION
 fi
-  
+# Complete g the same as git
+complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
+  || complete -o default -o nospace -F _git g
+
 source $GIT_PROMPT
 
 PS1='\[\033[0;33m\]\t\[\033[0;0m\] \[\033[${PROMPT_COLOR}\]\u@\h\[\033[0;0m\]:`pwd | sed "s/${ESCAPED_HOME}/~/" | sed "s/^.*\/\(.*\)\(\/.*\)\(\/.*\)$/\1\2\3/"`$(__git_ps1 " (%s)")\$ '
