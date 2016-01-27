@@ -85,6 +85,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-unimpaired'
 " Sensible defaults
 Plugin 'tpope/vim-sensible'
+" Better Ruby
+Bundle 'vim-ruby/vim-ruby'
 
 "" Autocomplete
 "Plugin 'ervandew/supertab'
@@ -117,6 +119,7 @@ let g:syntastic_html_checkers = ['']
 let g:syntastic_scss_checkers = ['scss_lint']
 " I like all
 let g:syntastic_javascript_checkers = ['jscs', 'jshint', 'eslint']
+let g:syntastic_ruby_checkers = ['rubocop']
 
 " Location window
 nmap <C-n> :lnext<CR>
