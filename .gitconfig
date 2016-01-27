@@ -73,3 +73,20 @@
   helper = osxkeychain
 [push]
   default = simple
+
+# "push.default = simple" is the default in git 2.0, but OS X still ships git
+# 1.9.3 ("push.default = matching") as of 10.10.2, so... we explicitly specify
+# the modern default to try and keep things sane if you accidentally use the
+# OS-provided git instead of the modern one from our package manager. When a
+# majority of Macs here are running OS X that ships git >= 2.0, we can likely
+# remove this.
+[push]
+	default = simple
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+# http://stackoverflow.com/questions/18257622/why-is-git-core-preloadindex-default-value-false
+[core]
+	preloadindex = true
+

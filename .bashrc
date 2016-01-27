@@ -87,3 +87,6 @@ HISTSIZE=130000 HISTFILESIZE=-1
 
 PATH=~/bin:/usr/local/bin:$PATH:/usr/local/sbin
 
+export PATH=/usr/local/bin:$PATH
+. /Users/pt/.rbenvrc
+. ~/.stripe-repos.sh
