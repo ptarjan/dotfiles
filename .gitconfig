@@ -39,7 +39,7 @@
   n = "!n() { git checkout origin/master -b ptarjan-$1; }; n "
   r = rebase
   f = fetch
-  p = push
+  p = push -u origin HEAD
   s = svn dcommit
   rc = !git add . && git rebase --continue
   ra = rebase --abort
