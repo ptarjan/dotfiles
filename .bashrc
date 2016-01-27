@@ -38,6 +38,9 @@ complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
 
 source $GIT_PROMPT
 
+# gogogogo
+export GOPATH=~/gocode/
+
 PS1='\[\033[0;33m\]\t\[\033[0;0m\] \[\033[${PROMPT_COLOR}\]\u@\h\[\033[0;0m\]:`pwd | sed "s/${ESCAPED_HOME}/~/" | sed "s/^.*\/\(.*\)\(\/.*\)\(\/.*\)$/\1\2\3/"`$(__git_ps1 " (%s)")\$ '
 # http://jonisalonen.com/2012/your-bash-prompt-needs-this/
 # PS1="\[\033[G\]$PS1"

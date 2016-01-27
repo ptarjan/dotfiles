@@ -86,7 +86,9 @@ Plugin 'tpope/vim-unimpaired'
 " Sensible defaults
 Plugin 'tpope/vim-sensible'
 " Better Ruby
-Bundle 'vim-ruby/vim-ruby'
+Plugin 'vim-ruby/vim-ruby'
+" Better Go
+Plugin 'fatih/vim-go'
 
 "" Autocomplete
 "Plugin 'ervandew/supertab'
