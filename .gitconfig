@@ -36,7 +36,7 @@
   edit = !$EDITOR `git diff HEAD^ --name-only`
   gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -d || exit 0
   rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git u; git r; git ra; git reset --hard; git clean -f; git clean -fdx'"
-  n = checkout origin/master -b
+  n = "!n() { git checkout origin/master -b ptarjan-$1; }; n "
   r = rebase
   f = fetch
   p = push
