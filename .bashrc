@@ -90,6 +90,9 @@ HISTSIZE=130000 HISTFILESIZE=-1
 
 PATH=~/bin:/usr/local/bin:$PATH:/usr/local/sbin
 
+# Stripe
 export PATH=/usr/local/bin:$PATH
 . /Users/pt/.rbenvrc
 . ~/.stripe-repos.sh
+export AWS_ACCESS_KEY_ID=":"
+export AWS_SECRET_ACCESS_KEY=":"
