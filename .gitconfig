@@ -35,17 +35,20 @@
   di = diff
   edit = !$EDITOR `git diff HEAD^ --name-only`
   gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -d || exit 0
-  rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git u; git r; git ra; git reset --hard; git clean -f; git clean -fdx'"
+  rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git r origin/master; git ra; git reset --hard; git clean -f; git clean -fdx'"
   n = "!n() { git checkout origin/master -b ptarjan-$1; }; n "
   r = rebase
+  rom = rebase origin/master
+  ri = rebase origin/master -i
   f = fetch
-  p = push -u origin HEAD
+  p = !git push -u origin HEAD && hub pull-request -o
   s = svn dcommit
   rc = !git add . && git rebase --continue
   ra = rebase --abort
   rbi = rebase -i
-  vim = !bash -c 'vim $(git diff --name-only "$1")' -
+  vim = !bash -c 'vim $(git diff --name-only)' -
   u = branch --set-upstream-to=origin/master
+  land = !git rebase -i origin/master && git push -u origin -f
 
 [svn]
   followparent = true
