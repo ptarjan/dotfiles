@@ -74,7 +74,8 @@ Plugin 'tpope/vim-surround'
 " Control P
 Plugin 'kien/ctrlp.vim'
 " Status line
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Better comments
 Plugin 'scrooloose/nerdcommenter'
 " Better JS
@@ -122,6 +123,7 @@ let g:syntastic_scss_checkers = ['scss_lint']
 " I like all
 let g:syntastic_javascript_checkers = ['jscs', 'jshint', 'eslint']
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_rubocop_exec = '/Users/pt/bin/rubocop.sh'
 
 " Location window
 nmap <C-n> :lnext<CR>
@@ -129,6 +131,8 @@ nmap <C-p> :lprevious<CR>
 
 " YCM
 autocmd CompleteDone * pclose
+let g:ycm_server_use_vim_stdout = 0
+let g:ycm_server_keep_logfiles = 1
 
 " Often mis typed commands
 command! Q  q
