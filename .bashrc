@@ -80,6 +80,12 @@ else
      start_agent;
 fi
 
+# First you have to:
+# brew install bash-completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+	. $(brew --prefix)/etc/bash_completion
+fi
+
 # android
 if hash brew 2>/dev/null; then
   export ANDROID_HOME=`brew --prefix android`
