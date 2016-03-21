@@ -96,9 +96,9 @@ Plugin 'fatih/vim-go'
 "" Automatically open autocomplete thing
 "Plugin 'AutoComplPop'
 " Autocomplete
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 " Javascript Autocomplete
-Plugin 'marijnh/tern_for_vim'
+"Plugin 'marijnh/tern_for_vim'
 
 call vundle#end()
 filetype plugin indent on
