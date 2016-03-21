@@ -41,7 +41,7 @@
   rom = rebase origin/master
   ri = rebase origin/master -i
   f = fetch
-  p = !git push -u origin HEAD && hub pull-request -o
+  p = "!p() { branch=\"$(git symbolic-ref HEAD)\"; branch=\"${branch#refs/heads/}\"; git push -u origin \"$branch\"; open \"http://github.com/stripe-internal/pay-server/pull/${branch//\\//%2F}\"; }; p"
   s = svn dcommit
   rc = !git add . && git rebase --continue
   ra = rebase --abort
