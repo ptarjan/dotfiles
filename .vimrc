@@ -158,9 +158,6 @@ else
   map ,e :tabe <C-R>=expand("%:p:h") . "\\" <CR>
 endif
 
-" Strip Trailing White-Space
-map <C-c> :%s/\s\+$//<CR>
-
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
@@ -236,14 +233,13 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 
 " Strip trailing whitespace
-autocmd BufWritePre *.php,*.js :%s/\s\+$//e
+autocmd FileType c,cpp,java,php,javascript,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 set tabstop=2
 
 " http://stackoverflow.com/questions/7797593/highlighting-more-than-80-characters-with-a-non-standard-colorscheme
 highlight OverLength ctermbg=red ctermfg=white guibg=#59292
-match OverLength /\%121v.\+/
-set textwidth=120
+set textwidth=80
 
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
