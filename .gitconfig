@@ -41,7 +41,7 @@
   rom = rebase origin/master
   ri = rebase origin/master -i
   f = fetch
-  p = "!p() { branch=\"$(git symbolic-ref HEAD)\"; branch=\"${branch#refs/heads/}\"; git push -u origin \"$branch\"; open \"http://github.com/stripe-internal/pay-server/pull/${branch//\\//%2F}\"; }; p"
+  p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL/git@github.com:/https://github.com/}\"; URL=\"${URL/.git//}\"; open \"$URL/compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
   s = svn dcommit
   rc = !git add . && git rebase --continue
   ra = rebase --abort
@@ -92,4 +92,3 @@
 # http://stackoverflow.com/questions/18257622/why-is-git-core-preloadindex-default-value-false
 [core]
 	preloadindex = true
-
