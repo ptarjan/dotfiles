@@ -1,0 +1,14 @@
+set editing-mode vi
+
+set keymap vi-command
+"gg": beginning-of-history
+"G": end-of-history
+
+set keymap vi-insert
+"jk": vi-movement-mode
+"\C-w": backward-kill-word
+"\C-p": history-search-backward
+
+"\e[1;9C": forward-word
+"\e[1;9D": backward-word
+
