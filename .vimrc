@@ -90,6 +90,8 @@ Plugin 'tpope/vim-sensible'
 Plugin 'vim-ruby/vim-ruby'
 " Better Go
 Plugin 'fatih/vim-go'
+" Jumping around the file
+Plugin 'easymotion/vim-easymotion'
 
 "" Autocomplete
 "Plugin 'ervandew/supertab'
