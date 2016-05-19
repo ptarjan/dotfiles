@@ -74,8 +74,8 @@ Plugin 'tpope/vim-surround'
 " Control P
 Plugin 'kien/ctrlp.vim'
 " Status line
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
 " Better comments
 Plugin 'scrooloose/nerdcommenter'
 " Better JS
