@@ -126,10 +126,8 @@ let g:syntastic_scss_checkers = ['scss_lint']
 let g:syntastic_javascript_checkers = ['jscs', 'jshint', 'eslint']
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_ruby_rubocop_exec = '/Users/pt/bin/rubocop.sh'
-
-" Location window
-nmap <C-n> :lnext<CR>
-nmap <C-p> :lprevious<CR>
+let g:syntastic_eruby_ruby_quiet_messages =
+    \ {'regex': 'possibly useless use of a variable in void context'}
 
 " YCM
 autocmd CompleteDone * pclose
