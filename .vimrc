@@ -148,10 +148,18 @@ nnoremap ' `
 nnoremap ` '
 
 " Tabs
-nmap <silent> <C-y> :tabnew<cr>
-imap <silent> <C-y> <ESC>:tabnew<cr>
-nmap <silent> ,, :tabprevious<CR>
-nmap <silent> .. :tabnext<CR>
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tn  :tabnext<Space>
+nnoremap tm  :tabm<Space>
+nnoremap td  :tabclose<CR>
+" Alternatively use
+nnoremap th :tabnext<CR>
+nnoremap tl :tabprev<CR>
+nnoremap tn :tabnew<CR>
 
 " Edit another file in the same directory as the current file, use: ,e
 if has("unix")
