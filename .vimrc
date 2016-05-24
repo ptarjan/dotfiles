@@ -92,6 +92,8 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'fatih/vim-go'
 " Jumping around the file
 Plugin 'easymotion/vim-easymotion'
+" Highlight Whitespace
+Plugin 'ntpeters/vim-better-whitespace'
 
 "" Autocomplete
 "Plugin 'ervandew/supertab'
