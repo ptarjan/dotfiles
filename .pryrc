@@ -7,3 +7,11 @@ Pry.config.commands.command(/pbpaste/, 'enter paste mode') do
   puts "== Pasting from clipboard ==\n#{tmp}\n== Executing ==\n"
   eval tmp
 end
+
+Pry.config.commands.command(/s/, 'step') do
+  _pry_.input = StringIO.new('step')
+end
+
+Pry.config.commands.command(/n/, 'next') do
+  _pry_.input = StringIO.new('next')
+end
