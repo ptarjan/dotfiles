@@ -81,6 +81,9 @@ else
      start_agent;
 fi
 
+# https://iterm2.com/documentation-shell-integration.html
+source ~/.iterm2_shell_integration.`basename $SHELL`
+
 # First you have to:
 # brew install bash-completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
