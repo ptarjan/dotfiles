@@ -93,10 +93,11 @@ fi
 # more history
 HISTSIZE=130000 HISTFILESIZE=-1
 
-PATH=~/bin:/usr/local/bin:$PATH:/usr/local/sbin
+# Remove this since it seems to already be coming from somewhere else...
+# PATH=~/bin:/usr/local/bin:$PATH:/usr/local/sbin
+PATH=$PATH:~/bin
 
 # Stripe
-export PATH=/usr/local/bin:$PATH
 . /Users/pt/.rbenvrc
 . ~/.stripe-repos.sh
 export AWS_ACCESS_KEY_ID=":"
