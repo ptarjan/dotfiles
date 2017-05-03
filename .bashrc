@@ -40,6 +40,7 @@ source $GIT_PROMPT
 
 # gogogogo
 export GOPATH=~/gocode/
+export PATH=$PATH:$GOPATH/bin
 
 PS1='\[\033[0;33m\]\t\[\033[0;0m\] \[\033[${PROMPT_COLOR}\]\u@\h\[\033[0;0m\]:`pwd | sed "s/${ESCAPED_HOME}/~/" | sed "s/^.*\/\(.*\)\(\/.*\)\(\/.*\)$/\1\2\3/"`$(__git_ps1 " (%s)")\$ '
 # http://jonisalonen.com/2012/your-bash-prompt-needs-this/
