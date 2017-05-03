@@ -41,7 +41,7 @@ set hidden
 set title
 set tabpagemax=15
 let mapleader = ","
-set wildignore+=*.o,*.obj,.git,.svn,.hg,*.gif,*.png,*.jpg,*.zip,*.tgz,*.tar.gz,*.tar.bz2,*.bmp,*.swf,*.eps,*.tiff,*.pdf,*.ps,*.ai,*.avi,*.ico,*.psd,*.docx,*.doc
+set wildignore+=*.o,*.obj,.git,.svn,.hg,*.gif,*.png,*.jpg,*.zip,*.tgz,*.tar.gz,*.tar.bz2,*.bmp,*.swf,*.eps,*.tiff,*.pdf,*.ps,*.ai,*.avi,*.ico,*.psd,*.docx,*.doc,*/node_modules/*
 set nofoldenable
 
 " Vundle
@@ -73,6 +73,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 " Control P
 Plugin 'kien/ctrlp.vim'
+Plugin 'FelikZ/ctrlp-py-matcher'
+" FZF File matcher
+" Plugin 'junegunn/fzf'
 " Status line
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
@@ -94,6 +97,14 @@ Plugin 'fatih/vim-go'
 Plugin 'easymotion/vim-easymotion'
 " Highlight Whitespace
 Plugin 'ntpeters/vim-better-whitespace'
+" Search
+Plugin 'mileszs/ack.vim'
+" Bracketed Paste
+Plugin 'ConradIrwin/vim-bracketed-paste'
+" Color scheme
+Bundle 'altercation/vim-colors-solarized'
+"Plugin 'jpo/vim-railscasts-theme'
+"Plugin 'zeis/vim-kolor'
 
 "" Autocomplete
 "Plugin 'ervandew/supertab'
@@ -108,7 +119,7 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
-colorscheme daaku
+"colorscheme daaku
 
 " syntastic
 set statusline+=%#warningmsg#
@@ -135,6 +146,11 @@ let g:syntastic_eruby_ruby_quiet_messages =
 autocmd CompleteDone * pclose
 let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_keep_logfiles = 1
+
+" Solarized
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Often mis typed commands
 command! Q  q
@@ -181,6 +197,8 @@ augroup END
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" from https://gist.github.com/joefiorini/1049083
+let g:ruby_indent_access_modifier_style="indent"
 
 " files in /tmp, like crontabs need this
 autocmd BufReadPost /tmp/* set backupcopy=yes
@@ -217,17 +235,12 @@ set expandtab
 " search full path for tags
 set tags=tags;/
 
-" colour scheme
-"syntax enable
-"set background=dark
-"colorscheme solarized
-
 " PHP comments
 set comments=s1:/*,mb:*,ex:*/
 
 " Ryan's crazy jk crazy escape
 inoremap jk <esc>
-inoremap <esc> <nop>
+" inoremap <esc> <nop>
 
 " Enter command mode by pressing ; instead of :
 noremap ; :
@@ -248,7 +261,7 @@ autocmd FileType c,cpp,java,php,javascript,ruby autocmd BufWritePre <buffer> :%s
 set tabstop=2
 
 " http://stackoverflow.com/questions/7797593/highlighting-more-than-80-characters-with-a-non-standard-colorscheme
-highlight OverLength ctermbg=red ctermfg=white guibg=#59292
+" highlight OverLength ctermbg=red ctermfg=white guibg=#59292
 set textwidth=80
 
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
@@ -258,27 +271,49 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Only search to current working dir
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard | grep -v node_modules', 'find %s -type f']
 let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " line up params
 set cindent
 set cino=(0<Enter>
 
 " http://blog.mattcrampton.com/post/86216925656/move-vim-swp-files
-" Make sure to run 
+" Make sure to run
 " mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
 set backupdir=~/.vim/backup_files//
 set directory=~/.vim/swap_files//
 set undodir=~/.vim/undo_files//
 
+" Ruby things I do a lot
+nnoremap <leader>d A<CR>require 'pry'; binding.pry<C-c>
+nnoremap <leader>D ^irequire 'pry'; binding.pry<CR><C-c>k$
+nnoremap <leader>l :echo line(".") + 1<CR>
+nnoremap <leader>a \!rubocop -a %
+
+" FZF
+nnoremap <C-p> :FZF<CR>
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
 " <mwang>
-nnoremap <leader>p  :setl paste!<CR>:setl paste?<CR>
-nnoremap <leader>s  :setl spell!<CR>:setl spell?<CR>
-nnoremap <leader>v  <C-w>v
+nnoremap <leader>p :setl paste!<CR>:setl paste?<CR>
+nnoremap <leader>s :setl spell!<CR>:setl spell?<CR>
+nnoremap <leader>v <C-w>v
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-cnoremap <C-b> <C-Left>
-cnoremap <C-f> <C-Right>
 cnoremap <C-d> <Delete>
 cnoremap <C-k> <C-\>estrpart(getcmdline(), 0, getcmdpos() - 1)<CR>
 
@@ -291,4 +326,5 @@ nnoremap <leader>gg :Ggrep<Space>
 nnoremap <leader>gl :Glog<CR><CR><CR>:copen<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gh :Gbrowse<CR>
+vnoremap <leader>gh :Gbrowse<CR>
 " </mwang>
