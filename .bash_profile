@@ -11,3 +11,4 @@ source ~/.profile
 ### BEGIN HENSON
 export PATH="/Users/pt/stripe/henson/bin:$PATH"
 ### END HENSON
+export PATH="/usr/local/sbin:$PATH"
