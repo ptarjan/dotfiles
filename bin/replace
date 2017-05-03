@@ -20,8 +20,13 @@ for file in $files; do
   # lockfile -l 30 $lockfile
 
   # Do the replace. I hope you didn't have any @ in your patterns
-  perl -p -i -e "s@$1@$2@g" $file
+  # perl -p -i -e "s{$1}{$2}g" $file
+  gsed -i "s/$1/$2/g" $file
+
+  git add $file
 
   # Unlock, someone else can modify
   # rm -f $lockfile
 done
+
+g commit -m "replace $1 $2"
