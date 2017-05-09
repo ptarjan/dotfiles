@@ -328,3 +328,5 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gh :Gbrowse<CR>
 vnoremap <leader>gh :Gbrowse<CR>
 " </mwang>
+"
+let g:fugitive_github_domains = ['https://git.corp.stripe.com']
