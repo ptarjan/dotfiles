@@ -290,7 +290,7 @@ set undodir=~/.vim/undo_files//
 nnoremap <leader>d A<CR>require 'pry'; binding.pry<C-c>
 nnoremap <leader>D ^irequire 'pry'; binding.pry<CR><C-c>k$
 nnoremap <leader>l :echo line(".") + 1<CR>
-nnoremap <leader>a \!rubocop -a %
+nnoremap <leader>a :!rubocop -a %<CR>
 
 " FZF
 nnoremap <C-p> :FZF<CR>
