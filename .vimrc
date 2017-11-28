@@ -297,7 +297,6 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " line up params
 set cindent
-set cino=(0<Enter>
 
 " http://blog.mattcrampton.com/post/86216925656/move-vim-swp-files
 " Make sure to run
