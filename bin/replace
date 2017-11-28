@@ -19,9 +19,15 @@ for file in $files; do
   # The replace has 30 seconds before the file is auto-unlocked
   # lockfile -l 30 $lockfile
 
-  # Do the replace. I hope you didn't have any @ in your patterns
-  # perl -p -i -e "s{$1}{$2}g" $file
-  gsed -i "s/$1/$2/g" $file
+  # Escape
+  # KEYWORD=$(sed 's/[]\/$*.^|[]/\\&/g' <<< $1)
+  # REPLACE=$(sed 's/[\/&]/\\&/g' <<< $2)
+  KEYWORD=$1
+  REPLACE=$2
+
+  # Do the replace.
+  # perl -p -i -e "s{$KEYWORD}{$REPLACE}g" $file
+  gsed -i "s~$KEYWORD~$REPLACE~g" $file
 
   git add $file
 
