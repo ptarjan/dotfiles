@@ -43,6 +43,8 @@ set tabpagemax=15
 let mapleader = ","
 set wildignore+=*.o,*.obj,.git,.svn,.hg,*.gif,*.png,*.jpg,*.zip,*.tgz,*.tar.gz,*.tar.bz2,*.bmp,*.swf,*.eps,*.tiff,*.pdf,*.ps,*.ai,*.avi,*.ico,*.psd,*.docx,*.doc,*/node_modules/*
 set nofoldenable
+" Turn off bracketed paste
+set t_BE=
 
 " Vundle
 " Make sure you do this first: 
