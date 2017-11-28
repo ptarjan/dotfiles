@@ -97,6 +97,8 @@ HISTSIZE=130000 HISTFILESIZE=-1
 # PATH=~/bin:/usr/local/bin:$PATH:/usr/local/sbin
 PATH=$PATH:~/bin
 
+source /Users/pt/.bazel/bin/bazel-complete.bash
+
 # Stripe
 . /Users/pt/.rbenvrc
 . ~/.stripe-repos.sh
