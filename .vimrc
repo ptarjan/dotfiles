@@ -132,26 +132,32 @@ syntax on
 
 "colorscheme daaku
 
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-"
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" These screw up ionic files so badly
-let g:syntastic_html_checkers = ['']
-" I only want to use this one linter, not scss
-let g:syntastic_scss_checkers = ['scss_lint']
-" I like all
-let g:syntastic_javascript_checkers = ['jscs', 'jshint', 'eslint']
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_ruby_rubocop_exec = '/Users/pt/bin/rubocop.sh'
-let g:syntastic_eruby_ruby_quiet_messages =
-    \ {'regex': 'possibly useless use of a variable in void context'}
+"" syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+""
+"let g:syntastic_aggregate_errors = 1
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"" These screw up ionic files so badly
+"let g:syntastic_html_checkers = ['']
+"" I only want to use this one linter, not scss
+"let g:syntastic_scss_checkers = ['scss_lint']
+"" I like all
+"let g:syntastic_javascript_checkers = ['jscs', 'jshint', 'eslint']
+"let g:syntastic_ruby_checkers = ['rubocop']
+"let g:syntastic_ruby_rubocop_exec = '/Users/pt/bin/rubocop.sh'
+"let g:syntastic_eruby_ruby_quiet_messages =
+"    \ {'regex': 'possibly useless use of a variable in void context'}
+
+" ale
+let g:ale_open_list = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_pattern_options = {'\.\(cc\|h\)$': {'ale_enabled': 0}}
+
 
 " YCM
 autocmd CompleteDone * pclose
