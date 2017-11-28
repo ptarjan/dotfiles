@@ -69,6 +69,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 " The directory on the left
 Plugin 'scrooloose/nerdtree'
 " Easy surounding
@@ -86,7 +87,9 @@ Plugin 'scrooloose/nerdcommenter'
 " Better JS
 Plugin 'pangloss/vim-javascript'
 " Syntax checking
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
+
 " Nicer QuickFix
 Plugin 'tpope/vim-unimpaired'
 " Sensible defaults
@@ -107,6 +110,12 @@ Plugin 'ConradIrwin/vim-bracketed-paste'
 Bundle 'altercation/vim-colors-solarized'
 "Plugin 'jpo/vim-railscasts-theme'
 "Plugin 'zeis/vim-kolor'
+" C++ Formatting
+Plugin 'rhysd/vim-clang-format'
+" C++ Highlighting
+Plugin 'octol/vim-cpp-enhanced-highlight'
+" LLDB
+" Bundle "gilligan/vim-lldb"
 
 "" Autocomplete
 "Plugin 'ervandew/supertab'
