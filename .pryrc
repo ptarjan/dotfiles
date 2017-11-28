@@ -8,10 +8,8 @@ Pry.config.commands.command(/pbpaste/, 'enter paste mode') do
   eval tmp
 end
 
-Pry.config.commands.command(/s/, 'step') do
-  _pry_.input = StringIO.new('step')
-end
-
-Pry.config.commands.command(/n/, 'next') do
-  _pry_.input = StringIO.new('next')
-end
+Pry.commands.alias_command 'c', 'continue'
+Pry.commands.alias_command 's', 'step'
+Pry.commands.alias_command 'n', 'next'
+Pry.commands.alias_command 'f', 'finish'
+Pry.commands.alias_command 'b', 'break'
