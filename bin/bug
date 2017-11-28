@@ -1,0 +1,7 @@
+#!/bin/bash
+
+OUT=`mktemp`
+script -q $OUT env PS1='$ ' bash --norc
+cat <(echo "\`\`\`") <(sed '$d' $OUT) <(echo "\`\`\`") | pbcopy
+echo "Your bug report is now on your clipboard"
+trap "rm $OUT" EXIT
