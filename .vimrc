@@ -306,10 +306,16 @@ set directory=~/.vim/swap_files//
 set undodir=~/.vim/undo_files//
 
 " Ruby things I do a lot
-nnoremap <leader>d A<CR>require 'pry'; binding.pry<C-c>
-nnoremap <leader>D ^irequire 'pry'; binding.pry<CR><C-c>k$
+nnoremap <leader>D A<CR>require 'pry'; binding.pry<C-c>
+" nnoremap <leader>D ^irequire 'pry'; binding.pry<CR><C-c>k$
 nnoremap <leader>l :echo line(".") + 1<CR>
 nnoremap <leader>a :!rubocop -a %<CR>
+
+" C++ things I do a lot
+nnoremap <leader>d A<CR>__asm__("int $3");<C-c>
+" autocmd BufWrite *.cc :! ./tools/scripts/format_cxx.sh %
+autocmd FileType cpp set shiftwidth=4
+
 
 " FZF
 nnoremap <C-p> :FZF<CR>
