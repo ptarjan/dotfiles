@@ -199,9 +199,9 @@ nnoremap tn :tabnew<CR>
 
 " Edit another file in the same directory as the current file, use: ,e
 if has("unix")
-  map ,e :tabe <C-R>=expand("%:p:h") . "/" <CR>
+  map ,e :tabe <C-R>=expand("%:h") . "/" <CR>
 else
-  map ,e :tabe <C-R>=expand("%:p:h") . "\\" <CR>
+  map ,e :tabe <C-R>=expand("%:h") . "\\" <CR>
 endif
 
 " When editing a file, always jump to the last known cursor position.
