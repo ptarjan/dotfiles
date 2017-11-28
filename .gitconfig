@@ -50,7 +50,7 @@
   rc = !git add . && git rebase --continue
   ra = rebase --abort
   rbi = rebase -i
-  vim = !bash -c 'vim $(git diff --name-only)' -
+  vim = !vim $(git diff --name-only --diff-filter=U)
   u = branch --set-upstream-to=origin/master
   land = !git rebase -i origin/master && git push -u origin -f
 
