@@ -169,6 +169,9 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+" clang-format
+autocmd FileType c ClangFormatAutoEnable
+
 " Often mis typed commands
 command! Q  q
 command! W  w
