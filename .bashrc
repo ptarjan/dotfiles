@@ -28,6 +28,11 @@ ESCAPED_HOME=`echo $HOME | sed "s:/:\\\\\\/:g"`
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
       . $(brew --prefix)/etc/bash_completion
 fi
+# brew install bazel
+if [ -f $(brew --prefix)/etc/bash_completion.d/bazel-complete.bash ]; then
+      . $(brew --prefix)/etc/bash_completion.d/bazel-complete.bash
+fi
+
 # Complete g the same as git
 complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
   || complete -o default -o nospace -F _git g
