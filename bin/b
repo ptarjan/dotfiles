@@ -1,1 +1,1 @@
-bazel build main:ruby-typer --config=unsafe "$@"
+bazel build main:ruby-typer --config=unsafe -c opt "$@"
