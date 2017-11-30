@@ -23,20 +23,14 @@ if [ ${UID} -eq 0 ]; then
 fi
 
 ESCAPED_HOME=`echo $HOME | sed "s:/:\\\\\\/:g"`
-GIT_PROMPT=/Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
-if [ ! -f $GIT_PROMPT ]; then 
-  GIT_PROMPT=~/.git-prompt.sh
-fi
 
-GIT_COMPLETION=/Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
-if [ -f $GIT_COMPLETION ]; then 
-  . $GIT_COMPLETION
+# brew install bash-completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+      . $(brew --prefix)/etc/bash_completion
 fi
 # Complete g the same as git
 complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
   || complete -o default -o nospace -F _git g
-
-source $GIT_PROMPT
 
 # gogogogo
 export GOPATH=~/gocode/
