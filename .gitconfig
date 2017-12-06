@@ -34,7 +34,7 @@
   st = status
   di = diff
   edit = !$EDITOR `git diff HEAD^ --name-only`
-  gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -d || exit 0
+  gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -D || exit 0
   rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git r origin/master; git ra; git reset --hard; git clean -f; git clean -fdx'"
   n = "!n() { git checkout origin/master-passing-tests -b pt-$1; }; n "
   r = rebase
