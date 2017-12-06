@@ -1,1 +1,1 @@
-./bazel-bin/main/ruby-typer "$@"
+~/stripe/ruby-typer/bazel-bin/main/ruby-typer "$@"
