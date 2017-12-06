@@ -122,7 +122,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 "" Automatically open autocomplete thing
 "Plugin 'AutoComplPop'
 " Autocomplete
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 " Javascript Autocomplete
 "Plugin 'marijnh/tern_for_vim'
 
@@ -163,6 +163,7 @@ let g:ale_pattern_options = {'\.\(cc\|h\)$': {'ale_enabled': 0}}
 autocmd CompleteDone * pclose
 let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_keep_logfiles = 1
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 " Solarized
 syntax enable
