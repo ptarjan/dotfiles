@@ -11,4 +11,3 @@ set keymap vi-insert
 
 "\e[1;9C": forward-word
 "\e[1;9D": backward-word
-
