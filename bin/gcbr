@@ -1,0 +1,18 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "-v" ]; then
+  set -x
+fi
+
+branches=$(git branch | grep -v '\*')
+
+for branch in $branches
+do
+  msg="Merge pull request #[0-9]\\+ from stripe-internal/$branch$"
+  commits=$(git log origin/master --grep "$msg" -n 1 --since "1 year ago")
+  if [ -n "$commits" ]
+  then
+    git branch -D "$branch"
+  fi
+done
