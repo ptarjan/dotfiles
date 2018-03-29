@@ -22,6 +22,7 @@
 /.config/gtk-2.0/
 /.config/hub
 /.cordova/
+/.cups/lpoptions
 /.dbshell
 /.dropbox/
 /.erlang.cookie
