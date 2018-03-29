@@ -50,6 +50,7 @@
 /.rbenv/
 /.rbenvrc
 /.rediscli_history
+/.sqlite_history
 /.ssh
 /.subversion/
 /.tmp/
