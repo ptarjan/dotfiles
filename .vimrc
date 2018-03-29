@@ -315,7 +315,7 @@ nnoremap <leader>l :echo line(".") + 1<CR>
 nnoremap <leader>a :!rubocop -a %<CR>
 
 " C++ things I do a lot
-nnoremap <leader>d A<CR>__asm__("int $3");<C-c>
+nnoremap <leader>d A<CR>stopInDebugger();<C-c>
 " autocmd BufWrite *.cc :! ./tools/scripts/format_cxx.sh %
 autocmd FileType cpp set shiftwidth=4
 
