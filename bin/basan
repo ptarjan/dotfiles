@@ -1,0 +1,1 @@
+bazel build main:ruby-typer -c opt "$@" --config sanitize
