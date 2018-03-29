@@ -78,6 +78,7 @@
 
 # work things
 /.sc_last_preflight
+/.stripe-certs/
 /.stripe-repos.sh
 /.stripe/
 /gocode
