@@ -319,6 +319,9 @@ nnoremap <leader>d A<CR>stopInDebugger();<C-c>
 " autocmd BufWrite *.cc :! ./tools/scripts/format_cxx.sh %
 autocmd FileType cpp set shiftwidth=4
 
+" ruby-typer
+autocmd BufNewFile,BufRead *.rbi set syntax=ruby
+
 
 " FZF
 " nnoremap <C-p> :FZF<CR>
