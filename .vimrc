@@ -361,3 +361,8 @@ vnoremap <leader>gh :Gbrowse<CR>
 " </mwang>
 "
 let g:fugitive_github_domains = ['https://git.corp.stripe.com']
+
+autocmd QuickFixCmdPost [^l]* cwindow
+autocmd QuickFixCmdPost l* lwindow
+set makeprg=scripts/bin/typecheck
+nnoremap <leader>t :silent make\|redraw!\|cw<CR>
