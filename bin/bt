@@ -1,1 +1,1 @@
-bazel test //... --config dbg
+bazel build ... --config dbg $@
