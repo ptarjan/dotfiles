@@ -9,6 +9,7 @@
 /.babel.json
 /.bash_history
 /.bash_sessions/
+/.bazel/
 /.bundle-gemfile-hook
 /.bundle/
 /.bzr.log
