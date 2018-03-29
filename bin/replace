@@ -8,31 +8,14 @@ else
 fi
 
 # Files to change
-files=`git grep -l -I "$git"`
+files=$(git grep -l -I "$git")
 
-# Do for loops splitting on newlines
-IFS=$'\n'
+KEYWORD=$1
+REPLACE=$2
 
-for file in $files; do
-  # Lock the file so we can run many of these at the same time without corruption
-  # lockfile=$file.lock
-  # The replace has 30 seconds before the file is auto-unlocked
-  # lockfile -l 30 $lockfile
+# Do the replace.
+echo "$files" | xargs gsed -i "s~$KEYWORD~$REPLACE~g"
 
-  # Escape
-  # KEYWORD=$(sed 's/[]\/$*.^|[]/\\&/g' <<< $1)
-  # REPLACE=$(sed 's/[\/&]/\\&/g' <<< $2)
-  KEYWORD=$1
-  REPLACE=$2
+echo "$files" | xargs git add
 
-  # Do the replace.
-  # perl -p -i -e "s{$KEYWORD}{$REPLACE}g" $file
-  gsed -i "s~$KEYWORD~$REPLACE~g" $file
-
-  git add $file
-
-  # Unlock, someone else can modify
-  # rm -f $lockfile
-done
-
-g commit -m "replace $1 $2"
+g commit -m 'replace "'"$1"'" "'"$2"'"'
