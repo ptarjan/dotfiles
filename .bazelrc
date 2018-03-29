@@ -1,0 +1,3 @@
+build --experimental_local_disk_cache --experimental_local_disk_cache_path=/Users/pt/tmp/bazel-cache
+test --experimental_local_disk_cache --experimental_local_disk_cache_path=/Users/pt/tmp/bazel-cache
+build --spawn_strategy=standalone --genrule_strategy=standalone
