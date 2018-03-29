@@ -16,6 +16,7 @@
 /.cache
 /.cargo/
 /.composer/
+/.config/.mono/
 /.config/configstore/
 /.config/git/
 /.config/gtk-2.0/
