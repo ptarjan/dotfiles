@@ -116,6 +116,8 @@ Plugin 'rhysd/vim-clang-format'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 " LLDB
 " Bundle "gilligan/vim-lldb"
+" Prettier
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 "" Autocomplete
 "Plugin 'ervandew/supertab'
