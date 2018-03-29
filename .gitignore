@@ -76,6 +76,7 @@
 /tmp
 
 # work things
+/.sc_last_preflight
 /.stripe-repos.sh
 /.stripe/
 /gocode
