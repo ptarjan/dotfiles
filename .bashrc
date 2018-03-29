@@ -94,6 +94,7 @@ HISTSIZE=130000 HISTFILESIZE=-1
 
 # Remove this since it seems to already be coming from somewhere else...
 # PATH=~/bin:/usr/local/bin:$PATH:/usr/local/sbin
+PATH=$PATH:~/stripe/ruby-typer/bazel-bin/main/
 PATH=$PATH:~/bin
 
 # Stripe
