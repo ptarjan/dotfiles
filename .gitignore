@@ -25,6 +25,7 @@
 /.cups/lpoptions
 /.dbshell
 /.dropbox/
+/.electron/
 /.erlang.cookie
 /.gem/
 /.gnupg/
