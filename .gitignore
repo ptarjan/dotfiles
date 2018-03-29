@@ -14,6 +14,7 @@
 /.bundle/
 /.bzr.log
 /.cache
+/.cargo/
 /.composer/
 /.config/configstore/
 /.config/git/
