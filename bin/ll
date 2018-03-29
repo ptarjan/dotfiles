@@ -1,1 +1,1 @@
-lldb ./bazel-bin/main/ruby-typer -- "$@"
+lldb ~/stripe/ruby-typer/bazel-bin/main/ruby-typer -- "$@"
