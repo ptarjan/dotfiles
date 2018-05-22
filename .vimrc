@@ -127,6 +127,8 @@ Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plugin 'Valloric/YouCompleteMe'
 " Javascript Autocomplete
 "Plugin 'marijnh/tern_for_vim'
+" Grep from vim
+Plugin 'mhinz/vim-grepper'
 
 call vundle#end()
 filetype plugin indent on

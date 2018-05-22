@@ -42,7 +42,7 @@
   rom = rebase origin/master
   ri = rebase origin/master -i
   f = fetch
-  p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL/git@git.corp.stripe.com:/https://git.corp.stripe.com/}\"; URL=\"${URL/.git//}\"; open \"${URL}/compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
+    p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL//ssh:\\/\\/git@/https://}\"; URL=\"${URL//git@git.corp.stripe.com:/https://git.corp.stripe.com/}\"; URL=\"${URL//.git//}\"; open \"${URL}/compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
   # p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL/ext::\\/usr\\/local\\/stripe\\/bin\\/git-remote-stripe-ext.rb %S /https://git.corp.stripe.com/}\"; URL=\"${URL/.git//}\"; open \"${URL}compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
   pf = !git push -f && ~/stripe/ci-notify/ci-notify
   fp = push --force-with-lease

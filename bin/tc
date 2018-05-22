@@ -1,1 +1,1 @@
-exec ./scripts/bin/typecheck "$@"
+exec ./scripts/ruby-types/typecheck_devel "$@"
