@@ -177,6 +177,10 @@ colorscheme solarized
 " clang-format
 autocmd FileType c ClangFormatAutoEnable
 
+" grepper
+nmap gs  <plug>(GrepperOperator)
+xmap gs  <plug>(GrepperOperator)
+
 " Often mis typed commands
 command! Q  q
 command! W  w
