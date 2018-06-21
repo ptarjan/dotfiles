@@ -1,1 +1,1 @@
-bazel build main:ruby-typer -c opt "$@"
+bazel build main:sorbet -c opt "$@"
