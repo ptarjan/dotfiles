@@ -1,2 +1,2 @@
 # ./scripts/bin/test "$@"
-bazel test ... --config dbg $@
+bazel test ... --config dbg --test_output=errors $@
