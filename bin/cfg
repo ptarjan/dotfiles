@@ -1,1 +1,1 @@
-~/stripe/ruby-typer/tools/scripts/cfg-view.sh "$@"
+~/stripe/sorbet/tools/scripts/cfg-view.sh "$@"
