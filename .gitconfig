@@ -60,7 +60,7 @@
   rmdir = true
 
 [user]
-  name = ptarjan
+  name = Paul Tarjan
   email = github@paulisageek.com
 	signingkey = 64A58882
 [log]
@@ -97,3 +97,5 @@
 # http://stackoverflow.com/questions/18257622/why-is-git-core-preloadindex-default-value-false
 [core]
 	preloadindex = true
+[web]
+	browser = open
