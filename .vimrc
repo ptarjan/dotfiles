@@ -363,10 +363,9 @@ nnoremap <leader>gg :Ggrep<Space>
 nnoremap <leader>gl :Glog<CR><CR><CR>:copen<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gh :Gbrowse<CR>
-vnoremap <leader>gh :Gbrowse<CR>
 " </mwang>
 "
-let g:fugitive_github_domains = ['https://git.corp.stripe.com']
+let g:fugitive_github_domains = ['git.corp.stripe.com']
 
 autocmd QuickFixCmdPost [^l]* cwindow
 autocmd QuickFixCmdPost l* lwindow
