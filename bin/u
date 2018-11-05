@@ -1,1 +1,3 @@
 ./tools/scripts/update_exp_files.sh
+git add test/testdata
+git commit -a -m "record"
