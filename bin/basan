@@ -1,1 +1,1 @@
-bazel build main:ruby-typer -c opt "$@" --config sanitize
+bazel build main:sorbet -c opt "$@" --config sanitize
