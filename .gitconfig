@@ -99,3 +99,5 @@
 	preloadindex = true
 [web]
 	browser = open
+[hub]
+	host = git.corp.stripe.com
