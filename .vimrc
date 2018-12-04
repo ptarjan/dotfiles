@@ -118,7 +118,6 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 " Bundle "gilligan/vim-lldb"
 " Prettier
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
-
 "" Autocomplete
 "Plugin 'ervandew/supertab'
 "" Automatically open autocomplete thing
@@ -129,6 +128,12 @@ Plugin 'Valloric/YouCompleteMe'
 "Plugin 'marijnh/tern_for_vim'
 " Grep from vim
 Plugin 'mhinz/vim-grepper'
+" LSP
+" Plugin 'prabirshrestha/async.vim'
+" Plugin 'prabirshrestha/vim-lsp'
+" Plugin 'prabirshrestha/asyncomplete.vim'
+" Plugin 'prabirshrestha/asyncomplete-buffer.vim'
+" Plugin 'yami-beta/asyncomplete-omni.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -168,6 +173,35 @@ autocmd CompleteDone * pclose
 let g:ycm_server_use_vim_stdout = 0
 let g:ycm_server_keep_logfiles = 1
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
+" vim-lsp
+" au User lsp_setup call lsp#register_server({
+"       \ 'name': 'sorbet',
+"       \ 'cmd': {server_info->[&shell, &shellcmdflag, 'sorbet/scripts/typecheck_devel --lsp']},
+"       \ 'initialization_options': {"diagnostics": "true"},
+"       \ 'whitelist': ['ruby'],
+"       \ })
+" "      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'pay exec scripts/bin/typecheck --lsp']},
+" let g:lsp_signs_enabled = 1         " enable signs
+" let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+" 
+" " asynccomplete
+" call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+"     \ 'name': 'buffer',
+"     \ 'whitelist': ['*'],
+"     \ 'blacklist': ['go'],
+"     \ 'completor': function('asyncomplete#sources#buffer#completor'),
+"     \ }))
+" set omnifunc=syntaxcomplete#Complete
+" call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+" 		\ 'name': 'omni',
+" 		\ 'whitelist': ['*'],
+" 		\ 'blacklist': ['c', 'cpp', 'html'],
+" 		\ 'completor': function('asyncomplete#sources#omni#completor')
+" 		\ }))
 
 " Solarized
 syntax enable
@@ -365,7 +399,7 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gh :Gbrowse<CR>
 " </mwang>
 "
-let g:fugitive_github_domains = ['git.corp.stripe.com']
+let g:github_enterprise_urls = ['https://git.corp.stripe.com']
 
 autocmd QuickFixCmdPost [^l]* cwindow
 autocmd QuickFixCmdPost l* lwindow
