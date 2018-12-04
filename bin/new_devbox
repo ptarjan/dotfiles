@@ -1,0 +1,4 @@
+set +ex
+
+scp /Users/pt/.inputrc `pay show-host`:~
+scp /Users/pt/.pryrc `pay show-host`:~
