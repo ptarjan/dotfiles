@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for file in $(git diff --name-only origin/master); do
+  lines=$(git diff -U0 origin/master -- "$file" | grep "^@@" | grep -Ev "@@ -[[:digit:]]+,0" | sed 's/^@@ //' | sed 's/ @@.*//' | cut -d' ' -f 1 | sed 's/[+-]//' | awk '{ if ($1 !~ /,/) { print $1",1" } else { print $1 } }' | sed 's/,/,+/')
+  for row in $lines; do
+    git blame -L"$row" origin/master -- "$file"
+  done
+done
