@@ -28,6 +28,7 @@
   bb = bisect bad
   bg = bisect good
   br = branch
+  cp = cherry-pick
   gr = grep -i
   ca = commit --amend -a -C HEAD
   co = checkout
