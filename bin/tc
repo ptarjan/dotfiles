@@ -1,1 +1,1 @@
-exec ./scripts/ruby-types/typecheck_devel "$@"
+exec ./sorbet/scripts/typecheck_devel "$@"
