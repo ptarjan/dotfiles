@@ -1,2 +1,7 @@
-# ./scripts/bin/test "$@"
-bazel test //... --config dbg --test_output=errors $@
+#!/bin/bash
+if [ $# == 0 ]; then
+  arg=...
+else
+  arg=test:test_PosTests/$(echo "$1" | sed 's,/test,,' | sed 's,\.rb,,')
+fi
+bazel test --config dbg --test_output=errors "$arg"
