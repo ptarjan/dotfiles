@@ -116,3 +116,6 @@ export PATH="node_modules/.bin:$PATH"
 #      Ask in #dashboard-platform or #iteng if you have questions.
 export PATH="./node_modules/.bin:$PATH"
 # END STRIPE NODE CONFIG
+
+# added by travis gem
+[ -f /Users/pt/.travis/travis.sh ] && source /Users/pt/.travis/travis.sh
