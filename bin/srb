@@ -1,1 +1,0 @@
-~/stripe/sorbet/bazel-bin/main/sorbet "$@"

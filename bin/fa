@@ -1,0 +1,3 @@
+./tools/scripts/format_build_files.sh
+./tools/scripts/format_cxx.sh
+git commit --amend -CHEAD -a

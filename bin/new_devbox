@@ -2,3 +2,7 @@ set +ex
 
 scp /Users/pt/.inputrc `pay show-host`:~
 scp /Users/pt/.pryrc `pay show-host`:~
+temp=$(mktemp)
+echo 'PATH=$PATH:~/bin' > $temp
+scp $temp `pay show-host`:~/.bashrc
+rm $temp

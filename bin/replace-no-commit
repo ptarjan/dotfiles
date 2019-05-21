@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Thrid arument is optional git grep, or else use arg 1
+if [ $# -eq 2 ]; then
+  git=$1;
+else
+  git=$3;
+fi
+
+# Files to change
+files=$(git grep -l -I "$git")
+
+KEYWORD=$1
+REPLACE=$2
+
+# Do the replace.
+echo "$files" | xargs gsed -i "s~$KEYWORD~$REPLACE~g"
