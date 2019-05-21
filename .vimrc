@@ -2,15 +2,12 @@
 
 set rtp=~/.vim,$VIMRUNTIME
 set autoindent
-"set backupcopy=yes  " to keep mac creator codes
-"set backupdir=~/.vim/backup
 set bs=2
 set clipboard=unnamed
 set encoding=utf-8
 set hlsearch
 set ignorecase smartcase
 set incsearch
-set nocompatible
 set noerrorbells
 set vb t_vb=
 set ruler
@@ -34,7 +31,6 @@ set wmh=0   " these disable the one line that vim shows by
 set wmw=0   " default for minimised
 set wrap
 set fillchars=stl:_,stlnc:-,vert:\|,fold:\ ,diff:-
-set swapsync=
 set history=1000
 "set mouse=a
 set hidden
@@ -47,7 +43,7 @@ set nofoldenable
 set t_BE=
 
 " Vundle
-" Make sure you do this first: 
+" Make sure you do this first:
 "
 "   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 "
@@ -76,7 +72,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 " Control P
 Plugin 'kien/ctrlp.vim'
-Plugin 'FelikZ/ctrlp-py-matcher'
+" Plugin 'FelikZ/ctrlp-py-matcher'
 " FZF File matcher
 " Plugin 'junegunn/fzf'
 " Status line
@@ -89,6 +85,9 @@ Plugin 'pangloss/vim-javascript'
 " Syntax checking
 " Plugin 'scrooloose/syntastic'
 Plugin 'w0rp/ale'
+
+" Typescript
+Plugin 'leafgarland/typescript-vim'
 
 " Nicer QuickFix
 Plugin 'tpope/vim-unimpaired'
@@ -333,10 +332,9 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " Control p
 " Only search to current working dir
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard | grep -v node_modules', 'find %s -type f']
 let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " line up params
 set cindent
