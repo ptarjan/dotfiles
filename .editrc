@@ -1,0 +1,4 @@
+bind -v
+bind "^R" em-inc-search-prev
+
+bind "jk" vi-command-mode
