@@ -119,3 +119,5 @@ export PATH="./node_modules/.bin:$PATH"
 
 # added by travis gem
 [ -f /Users/pt/.travis/travis.sh ] && source /Users/pt/.travis/travis.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
