@@ -24,3 +24,4 @@ export PATH="/Users/pt/stripe/space-commander/bin:$PATH"
 
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"

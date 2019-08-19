@@ -4,4 +4,4 @@ if [ $# == 0 ]; then
 else
   arg=test:test_PosTests/$(echo "$1" | sed 's,/test,,' | sed 's,\.rb,,')
 fi
-bazel test --config=dbg --test_output=errors "$arg"
+bazel test --config=dbg --test_output=errors --test_summary=terse "$arg"

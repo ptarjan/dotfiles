@@ -71,7 +71,7 @@ Plugin 'scrooloose/nerdtree'
 " Easy surounding
 Plugin 'tpope/vim-surround'
 " Control P
-Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim'
 " Plugin 'FelikZ/ctrlp-py-matcher'
 " FZF File matcher
 " Plugin 'junegunn/fzf'
@@ -137,6 +137,10 @@ Plugin 'mhinz/vim-grepper'
 call vundle#end()
 filetype plugin indent on
 syntax on
+
+" FZF
+set rtp+=/usr/local/opt/fzf
+:nnoremap <C-P> :FZF<CR>
 
 "colorscheme daaku
 

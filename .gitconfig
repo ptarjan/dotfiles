@@ -55,6 +55,7 @@
   vim = !vim $(git diff --name-only --diff-filter=U)
   u = branch --set-upstream-to=origin/master
   land = !git rebase -i origin/master && git push -u origin -f
+  cam = "!f() { git commit -a -m \"$*\"; }; f"
 
 [svn]
   followparent = true
@@ -102,3 +103,5 @@
 	browser = open
 [hub]
 	host = git.corp.stripe.com
+[protocol]
+	version = 2

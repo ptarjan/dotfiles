@@ -120,4 +120,6 @@ export PATH="./node_modules/.bin:$PATH"
 # added by travis gem
 [ -f /Users/pt/.travis/travis.sh ] && source /Users/pt/.travis/travis.sh
 
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --ignore-file '$HOME/.gitignore'"
+export FZF_CTRL_T_COMMAND="fd --type f --hidden --ignore-file '$HOME/.gitignore'"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

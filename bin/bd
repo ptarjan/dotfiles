@@ -1,1 +1,1 @@
-bazel build main:sorbet --config dbg $@
+bazel build main:sorbet --config dbg --config=static-libs $@
