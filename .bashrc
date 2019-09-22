@@ -24,13 +24,15 @@ fi
 
 ESCAPED_HOME=`echo $HOME | sed "s:/:\\\\\\/:g"`
 
-# brew install bash-completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-      . $(brew --prefix)/etc/bash_completion
-fi
-# brew install bazel
-if [ -f $(brew --prefix)/etc/bash_completion.d/bazel-complete.bash ]; then
-      . $(brew --prefix)/etc/bash_completion.d/bazel-complete.bash
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # brew install bash-completion
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+          . $(brew --prefix)/etc/bash_completion
+    fi
+    # brew install bazel
+    if [ -f $(brew --prefix)/etc/bash_completion.d/bazel-complete.bash ]; then
+          . $(brew --prefix)/etc/bash_completion.d/bazel-complete.bash
+    fi
 fi
 
 # Complete g the same as git
@@ -84,12 +86,6 @@ fi
 
 # https://iterm2.com/documentation-shell-integration.html
 source ~/.iterm2_shell_integration.`basename $SHELL`
-
-# First you have to:
-# brew install bash-completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-	. $(brew --prefix)/etc/bash_completion
-fi
 
 # more history
 HISTSIZE=130000 HISTFILESIZE=-1
