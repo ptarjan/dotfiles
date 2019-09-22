@@ -95,27 +95,29 @@ HISTSIZE=130000 HISTFILESIZE=-1
 PATH=$PATH:~/stripe/sorbet/bazel-bin/main/
 PATH=$PATH:~/bin
 
-# Stripe
-. /Users/pt/.rbenvrc
-. ~/.stripe-repos.sh
-export AWS_ACCESS_KEY_ID=":"
-export AWS_SECRET_ACCESS_KEY=":"
-# BEGIN STRIPE NODE CONFIG
-#      To undo the following behavior, comment it out, dont delete it;
-#      'pay-server/scripts/frontend/install_node_modules' will just add it again.
-#      Ask in #frontend-infra or #iteng if you have questions.
-export PATH="node_modules/.bin:$PATH"
-# END STRIPE NODE CONFIG
-# BEGIN STRIPE NODE CONFIG
-#      To undo the following behavior, comment it out, dont delete it;
-#      'pay-server/scripts/frontend/install_node_modules' will just add it again.
-#      Ask in #dashboard-platform or #iteng if you have questions.
-export PATH="./node_modules/.bin:$PATH"
-# END STRIPE NODE CONFIG
-
-# added by travis gem
-[ -f /Users/pt/.travis/travis.sh ] && source /Users/pt/.travis/travis.sh
-
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --ignore-file '$HOME/.gitignore'"
 export FZF_CTRL_T_COMMAND="fd --type f --hidden --ignore-file '$HOME/.gitignore'"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Stripe
+if [ -f ~/.stripe-repos.sh ]; then
+    . /Users/pt/.rbenvrc
+    . ~/.stripe-repos.sh
+    export AWS_ACCESS_KEY_ID=":"
+    export AWS_SECRET_ACCESS_KEY=":"
+    # BEGIN STRIPE NODE CONFIG
+    #      To undo the following behavior, comment it out, dont delete it;
+    #      'pay-server/scripts/frontend/install_node_modules' will just add it again.
+    #      Ask in #frontend-infra or #iteng if you have questions.
+    export PATH="node_modules/.bin:$PATH"
+    # END STRIPE NODE CONFIG
+    # BEGIN STRIPE NODE CONFIG
+    #      To undo the following behavior, comment it out, dont delete it;
+    #      'pay-server/scripts/frontend/install_node_modules' will just add it again.
+    #      Ask in #dashboard-platform or #iteng if you have questions.
+    export PATH="./node_modules/.bin:$PATH"
+    # END STRIPE NODE CONFIG
+
+    # added by travis gem
+    [ -f /Users/pt/.travis/travis.sh ] && source /Users/pt/.travis/travis.sh
+fi
