@@ -5,7 +5,9 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 ### BEGIN STRIPE
-source ~/.stripe_profile
+if [ -f ~/.stripe_profile ]; then
+  source ~/.stripe_profile
+fi
 ### END STRIPE
 
 ### BEGIN HENSON
