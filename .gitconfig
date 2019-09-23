@@ -37,11 +37,11 @@
   edit = !$EDITOR `git diff HEAD^ --name-only`
   gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -D || exit 0
   rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git r origin/master; git ra; git reset --hard; git clean -f; git clean -fdx'"
-  n = "!n() { git checkout origin/master -b pt-$1; }; n "
+  n = "!n() { git checkout origin/master-passing-tests -b pt-$1; }; n "
   r = rebase
   rw = rebase -X ignore-space-change
-  rom = rebase origin/master
-  ri = rebase origin/master -i
+  rom = rebase origin/master-passing-tests
+  ri = rebase origin/master-passing-tests -i
   f = fetch
   p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL/git.corp.stripe.com:/https://git.corp.stripe.com/}\"; URL=\"${URL/git@/}\"; URL=\"${URL/.git/}\"; open \"${URL}/compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
   # p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL//ssh:\\/\\/git@/https://}\"; URL=\"${URL//git@git.corp.stripe.com:/https://git.corp.stripe.com/}\"; URL=\"${URL//.git//}\"; open \"${URL}/compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
