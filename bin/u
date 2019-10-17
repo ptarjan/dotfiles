@@ -1,4 +1,5 @@
 set -e
-./tools/scripts/update_exp_files.sh
+# ./tools/scripts/update_exp_files.sh
+tools/scripts/update_testdata_exp.sh
 git add test
 git commit -a -m "record"

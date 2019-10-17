@@ -1,1 +1,1 @@
-lldb ~/stripe/sorbet/bazel-bin/main/sorbet -- "$@"
+lldb ~/stripe/sorbet_llvm/bazel-bin/main/sorbet_llvm -- --silence-dev-message --no-error-count --typed=true --llvm-ir-folder /tmp "$@"

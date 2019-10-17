@@ -1,1 +1,1 @@
-bazel build main:sorbet "$@"
+bazel build main:sorbet_llvm "$@"

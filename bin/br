@@ -1,1 +1,1 @@
-bazel build main:sorbet --config=release-mac "$@"
+bazel build main:sorbet_llvm --config=release-mac "$@"
