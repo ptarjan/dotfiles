@@ -1,0 +1,67 @@
+version: '3.3'
+services:
+  plex:
+    container_name: plex
+    restart: always
+    environment:
+      - TZ=America/Los_Angeles
+    ports:
+      - 32400:32400/tcp
+      - 3005:3005/tcp
+      - 8324:8324/tcp
+      - 32469:32469/tcp
+      - 1900:1900/udp
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
+    volumes:
+      - '/home/plex:/root'
+      - '/mnt/data/Transcode:/transcode'
+      - '/mnt/data:/media'
+    image: jaymoulin/plex
+
+  home-assistant:
+    container_name: home-assistant
+    restart: always
+    environment:
+      - TZ=America/Los_Angeles
+    ports:
+      - '8123:8123'
+    volumes:
+      - '/home/pt/homeassistant-config:/config'
+      - '/etc/letsencrypt/archive/home.paulisageek.com:/ssl'
+    image: 'homeassistant/raspberrypi4-homeassistant:stable'
+
+  sonarr:
+    container_name: sonarr
+    restart: always
+    environment:
+      - PUID=1002
+      - PGID=1002
+      - TZ=America/Los_Angeles
+      - UMASK_SET=022
+    ports:
+      - '8989:8989'
+    volumes:
+      - '/home/sonarr:/config'
+      - '/mnt/data/TV/:/tv'
+      - '/mnt/data/Downloads:/downloads'
+    image: linuxserver/sonarr
+
+  transmission:
+    container_name: transmission
+    restart: always
+    environment:
+      - PGID=1003
+      - PUID=1003
+      - TZ=Americas/Los_Angeles
+    ports:
+      - '9091:9091'
+      - '51413:51413'
+      - '51413:51413/udp'
+    volumes:
+      - '/home/transmission/config:/config'
+      - '/mnt/data/Downloads:/downloads'
+      - '/mnt/data/Watch:/watch'
+    image: linuxserver/transmission
