@@ -1,1 +1,1 @@
-bazel build main:sorbet_llvm --config dbg $@
+bazel build main:sorbet --config dbg $@
