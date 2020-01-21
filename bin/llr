@@ -1,0 +1,2 @@
+s $1
+RUBYLIB=bazel-bin/external/ruby_2_6_3/ruby.runfiles/ruby_2_6_3/lib/ruby/2.6.0/x86_64-darwin18:bazel-bin/external/ruby_2_6_3/ruby.runfiles/ruby_2_6_3/lib/ruby/2.6.0 llvmir=/tmp lldb bazel-bin/external/ruby_2_6_3/bin/ruby -- -r $(pwd)/run/tools/preamble.rb -r $(pwd)/run/tools/patch_require.rb -e "require './$1'"
