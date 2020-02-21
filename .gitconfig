@@ -1,5 +1,5 @@
 [core]
-  excludesfile = /home/ptarjan/.gitignore
+	excludesfile = /Users/paul.tarjan/.gitignore_global
 
 ### colors are meant for a dark terminal
 [color]
@@ -63,7 +63,7 @@
 
 [user]
   name = Paul Tarjan
-  email = github@paulisageek.com
+	email = paul.tarjan@robinhood.com
 	signingkey = 64A58882
 [log]
   date = relative

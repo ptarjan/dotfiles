@@ -27,3 +27,18 @@ export PATH="/Users/pt/stripe/space-commander/bin:$PATH"
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export PATH="/usr/local/opt/thrift@0.9/bin:$PATH"
+export PROJECT_HOME="/Users/paul.tarjan/robinhood"
+export PATH="$PATH:$HOME/robinhood/phabricator/arcanist/bin/"
+# BEGIN ANSIBLE MANAGED BLOCK
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+if which pyenv-virtualenv-init > /dev/null; then
+  eval "$(pyenv virtualenv-init -)"
+fi
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export WORKON_HOME="$HOME/.virtualenvs"
+pyenv virtualenvwrapper_lazy
+export CPPFLAGS=-I$(brew --prefix openssl)/include
+export LDFLAGS=-L$(brew --prefix openssl)/lib
+# END ANSIBLE MANAGED BLOCK

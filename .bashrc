@@ -121,3 +121,9 @@ if [ -f ~/.stripe-repos.sh ]; then
     # added by travis gem
     [ -f /Users/pt/.travis/travis.sh ] && source /Users/pt/.travis/travis.sh
 fi
+
+# Robinhood
+export APOLLO_NAMESPACE=paul-tarjan
+alias ut="DJANGO_SETTINGS_MODULE=settings.local.server REUSE_DB=true ./manage.py test --nologcapture --nocapture"
+alias mut="DJANGO_SETTINGS_MODULE=settings.local.server REUSE_DB=false ./manage.py test --nologcapture --noinput --nocapture"
+alias nut="DJANGO_SETTINGS_MODULE=settings.local.server ./manage.py fast_migrate -t -x DJANGO_SETTINGS_MODULE=settings.local.server ./manage.py test --nologcapture --nocapture --keepdb"

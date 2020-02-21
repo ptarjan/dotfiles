@@ -88,6 +88,7 @@ Plugin 'w0rp/ale'
 
 " Typescript
 Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
 
 " Nicer QuickFix
 Plugin 'tpope/vim-unimpaired'
@@ -122,7 +123,7 @@ Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 "" Automatically open autocomplete thing
 "Plugin 'AutoComplPop'
 " Autocomplete
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 " Javascript Autocomplete
 "Plugin 'marijnh/tern_for_vim'
 " Grep from vim
@@ -133,6 +134,9 @@ Plugin 'mhinz/vim-grepper'
 " Plugin 'prabirshrestha/asyncomplete.vim'
 " Plugin 'prabirshrestha/asyncomplete-buffer.vim'
 " Plugin 'yami-beta/asyncomplete-omni.vim'
+" Sublime's multiple cursors
+Plugin 'terryma/vim-multiple-cursors'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -169,6 +173,20 @@ set rtp+=/usr/local/opt/fzf
 let g:ale_open_list = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_pattern_options = {'\.\(cc\|h\)$': {'ale_enabled': 0}}
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['tsserver', 'tslint'],
+\   'vue': ['eslint']
+\}
+let g:ale_fixers = {
+\    'javascript': ['eslint'],
+\    'typescript': ['prettier'],
+\    'vue': ['eslint'],
+\    'scss': ['prettier'],
+\    'html': ['prettier'],
+\    'python' : ['autopep8', 'reorder-python-imports', 'trim_whitespace', 'remove_trailing_lines'],
+\}
+let g:ale_fix_on_save = 1
 
 
 " YCM
@@ -213,6 +231,9 @@ colorscheme solarized
 
 " clang-format
 autocmd FileType c ClangFormatAutoEnable
+
+" prettier
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 " grepper
 nmap gs  <plug>(GrepperOperator)
@@ -351,13 +372,13 @@ set directory=~/.vim/swap_files//
 set undodir=~/.vim/undo_files//
 
 " Ruby things I do a lot
-nnoremap <leader>D A<CR>require 'pry'; binding.pry<C-c>
+" nnoremap <leader>D A<CR>require 'pry'; binding.pry<C-c>
 " nnoremap <leader>D ^irequire 'pry'; binding.pry<CR><C-c>k$
 nnoremap <leader>l :echo line(".") + 1<CR>
 nnoremap <leader>a :!rubocop -a %<CR>
 
 " C++ things I do a lot
-nnoremap <leader>d A<CR>stopInDebugger();<C-c>
+" nnoremap <leader>d A<CR>stopInDebugger();<C-c>
 " autocmd BufWrite *.cc :! ./tools/scripts/format_cxx.sh %
 autocmd FileType cpp set shiftwidth=4
 
@@ -407,3 +428,7 @@ autocmd QuickFixCmdPost [^l]* cwindow
 autocmd QuickFixCmdPost l* lwindow
 set makeprg=scripts/bin/typecheck
 nnoremap <leader>t :silent make\|redraw!\|cw<CR>
+
+" Python things I do a lot
+nnoremap <leader>D A<CR>import pdb; pdb.set_trace()<C-c>
+nnoremap <leader>d A<CR>import pdb; pdb.set_trace()<C-c>
