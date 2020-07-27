@@ -6,10 +6,11 @@ services:
     network_mode: host
     environment:
       - TZ=America/Los_Angeles
+      - PLEX_CLAIM=claim-eU-xGCDwJvizpq_LEuNS
     volumes:
-      - '/home/plex:/root/Library'
-      - '/mnt/data/Transcode:/transcode'
-      - '/mnt/data:/media'
+      - /home/plex:/root/Library
+      - /mnt/data/Transcode:/transcode
+      - /mnt/data:/media
     image: jaymoulin/plex
 
   home-assistant:
@@ -18,11 +19,11 @@ services:
     environment:
       - TZ=America/Los_Angeles
     ports:
-      - '8123:8123'
+      - 8123:8123
     volumes:
-      - '/home/pt/homeassistant-config:/config'
-      - '/etc/letsencrypt/archive/home.paulisageek.com:/ssl'
-    image: 'homeassistant/raspberrypi4-homeassistant:stable'
+      - /home/pt/homeassistant-config:/config
+      - /etc/letsencrypt/:/ssl
+    image: homeassistant/raspberrypi4-homeassistant:stable
 
   sonarr:
     container_name: sonarr
@@ -33,11 +34,11 @@ services:
       - TZ=America/Los_Angeles
       - UMASK_SET=022
     ports:
-      - '8989:8989'
+      - 8989:8989
     volumes:
-      - '/home/sonarr:/config'
-      - '/mnt/data/TV/:/tv'
-      - '/mnt/data/Downloads:/downloads'
+      - /home/sonarr:/config
+      - /mnt/data/TV/:/tv
+      - /mnt/data/Downloads:/downloads
     image: linuxserver/sonarr
 
   transmission:
@@ -48,11 +49,64 @@ services:
       - PUID=1003
       - TZ=Americas/Los_Angeles
     ports:
-      - '9091:9091'
-      - '51413:51413'
-      - '51413:51413/udp'
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
     volumes:
-      - '/home/transmission/config:/config'
-      - '/mnt/data/Downloads:/downloads'
-      - '/mnt/data/Watch:/watch'
+      - /home/transmission/config:/config
+      - /mnt/data/Downloads:/downloads
+      - /mnt/data/Watch:/watch
     image: linuxserver/transmission
+
+  jackett:
+    container_name: jackett
+    restart: always
+    environment:
+      - PUID=1004
+      - PGID=1004
+      - TZ=Americas/Los_Angeles
+    volumes:
+      - /home/jacket:/config
+      - /mnt/data/Downloads:/downloads
+    ports:
+      - 9117:9117
+    image: linuxserver/jackett
+
+#   couchpotato:
+#     container_name: couchpotato
+#     restart: always
+#     environment:
+#       - PUID=1005
+#       - PGID=1005
+#       - TZ=Americas/Los_Angeles
+#     ports:
+#       - 5050:5050
+#     volumes:
+#       - /home/couchpotato:/config
+#       - /mnt/data/Downloads:/downloads
+#       - /mnt/data/Movies:/movies
+#     image: linuxserver/couchpotato
+
+  radarr:
+    container_name: radarr
+    restart: always
+    environment:
+      - PUID=1006
+      - PGID=1006
+      - TZ=Americas/Los_Angeles
+    volumes:
+      - /home/radarr:/config
+      - /mnt/data/Downloads:/downloads
+      - /mnt/data/Movies:/movies
+    ports:
+      - 7878:7878
+    image: linuxserver/radarr
+
+  node-red:
+    image: nodered/node-red:latest
+    environment:
+      - TZ=Americas/Los_Angeles
+    ports:
+      - 1880:1880
+    volumes:
+      - /home/pt/node-red:/data
