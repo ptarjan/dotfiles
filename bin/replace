@@ -13,8 +13,15 @@ files=$(git grep -l -I "$git")
 KEYWORD=$1
 REPLACE=$2
 
+if ! [ -x "$(command -v gsed)" ]; then
+  gsed=sed
+else
+  gsed=gsed
+fi
+
+
 # Do the replace.
-echo "$files" | xargs gsed -i "s~$KEYWORD~$REPLACE~g"
+echo "$files" | xargs $gsed -i "s~$KEYWORD~$REPLACE~g"
 
 echo "$files" | xargs git add
 
