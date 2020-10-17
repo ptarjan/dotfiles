@@ -85,6 +85,8 @@ Plugin 'pangloss/vim-javascript'
 " Syntax checking
 " Plugin 'scrooloose/syntastic'
 Plugin 'w0rp/ale'
+" Autocomplete
+" Plugin 'neoclide/coc.nvim'
 
 " Typescript
 Plugin 'leafgarland/typescript-vim'
@@ -136,6 +138,8 @@ Plugin 'mhinz/vim-grepper'
 " Plugin 'yami-beta/asyncomplete-omni.vim'
 " Sublime's multiple cursors
 Plugin 'terryma/vim-multiple-cursors'
+" Salt
+Plugin 'saltstack/salt-vim'
 
 
 call vundle#end()
@@ -186,7 +190,7 @@ let g:ale_fixers = {
 \    'html': ['prettier'],
 \    'python' : ['autopep8', 'reorder-python-imports', 'trim_whitespace', 'remove_trailing_lines'],
 \}
-let g:ale_fix_on_save = 1
+"let g:ale_fix_on_save = 1
 
 
 " YCM
@@ -345,11 +349,13 @@ nnoremap <silent> k gk
 " Strip trailing whitespace
 autocmd FileType c,cpp,java,php,javascript,ruby autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+autocmd Filetype yaml setlocal tabstop=2 ai
+
 set tabstop=2
 
 " http://stackoverflow.com/questions/7797593/highlighting-more-than-80-characters-with-a-non-standard-colorscheme
 " highlight OverLength ctermbg=red ctermfg=white guibg=#59292
-set textwidth=80
+set textwidth=120
 
 " http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
@@ -367,15 +373,18 @@ set cindent
 " http://blog.mattcrampton.com/post/86216925656/move-vim-swp-files
 " Make sure to run
 " mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
-set backupdir=~/.vim/backup_files//
-set directory=~/.vim/swap_files//
-set undodir=~/.vim/undo_files//
+set backupdir=~/.vim/backup_files/
+set directory=~/.vim/swap_files/
+set undodir=~/.vim/undo_files/
 
 " Ruby things I do a lot
 " nnoremap <leader>D A<CR>require 'pry'; binding.pry<C-c>
 " nnoremap <leader>D ^irequire 'pry'; binding.pry<CR><C-c>k$
 nnoremap <leader>l :echo line(".") + 1<CR>
 nnoremap <leader>a :!rubocop -a %<CR>
+
+" Jenkins
+au BufNewFile,BufRead Jenkinsfile setf groovy
 
 " C++ things I do a lot
 " nnoremap <leader>d A<CR>stopInDebugger();<C-c>
@@ -432,3 +441,6 @@ nnoremap <leader>t :silent make\|redraw!\|cw<CR>
 " Python things I do a lot
 nnoremap <leader>D A<CR>import pdb; pdb.set_trace()<C-c>
 nnoremap <leader>d A<CR>import pdb; pdb.set_trace()<C-c>
+
+" Reviewers
+nnoremap <leader>r ibaogang.song justin ann.rajan<C-c>
