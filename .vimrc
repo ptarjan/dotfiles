@@ -86,7 +86,7 @@ Plugin 'pangloss/vim-javascript'
 " Plugin 'scrooloose/syntastic'
 Plugin 'w0rp/ale'
 " Autocomplete
-" Plugin 'neoclide/coc.nvim'
+Plugin 'neoclide/coc.nvim'
 
 " Typescript
 Plugin 'leafgarland/typescript-vim'
@@ -443,4 +443,4 @@ nnoremap <leader>D A<CR>import pdb; pdb.set_trace()<C-c>
 nnoremap <leader>d A<CR>import pdb; pdb.set_trace()<C-c>
 
 " Reviewers
-nnoremap <leader>r ibaogang.song justin ann.rajan<C-c>
+nnoremap <leader>r ibaogang.song justin ann.rajan gabriel.silk<C-c>
