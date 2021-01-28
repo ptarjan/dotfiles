@@ -443,4 +443,4 @@ nnoremap <leader>D A<CR>import pdb; pdb.set_trace()<C-c>
 nnoremap <leader>d A<CR>import pdb; pdb.set_trace()<C-c>
 
 " Reviewers
-nnoremap <leader>r ibaogang.song justin ann.rajan gabriel.silk<C-c>
+nnoremap <leader>r ibaogang.song justin ann.rajan kelechi.dike gabriel.silk<C-c>

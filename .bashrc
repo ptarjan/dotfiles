@@ -42,6 +42,7 @@ complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
 # gogogogo
 export GOPATH=~/gocode/
 export PATH=$PATH:$GOPATH/bin
+export PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig/
 
 source ~/.git-prompt.sh
 PS1='\[\033[${PROMPT_COLOR}\]`pwd | sed "s/${ESCAPED_HOME}/~/" | sed "s/^.*\/\(.*\)\(\/.*\)\(\/.*\)$/\1\2\3/"`\[\033[0;0m\]$(__git_ps1 " %s ")\$ '
@@ -139,3 +140,7 @@ kshell () {
 		return 1
 	fi
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
