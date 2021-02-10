@@ -39,6 +39,6 @@ fi
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export WORKON_HOME="$HOME/.virtualenvs"
 pyenv virtualenvwrapper_lazy
-export CPPFLAGS=-I$(brew --prefix openssl)/include
-export LDFLAGS=-L$(brew --prefix openssl)/lib
+export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
+export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
 # END ANSIBLE MANAGED BLOCK
