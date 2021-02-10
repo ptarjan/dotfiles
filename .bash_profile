@@ -42,3 +42,4 @@ pyenv virtualenvwrapper_lazy
 export CPPFLAGS=-I/usr/local/opt/openssl@1.1/include
 export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
 # END ANSIBLE MANAGED BLOCK
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"

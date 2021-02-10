@@ -36,8 +36,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # Complete g the same as git
-complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
-  || complete -o default -o nospace -F _git g
+complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g 2>/dev/null \
+  || complete -o default -o nospace -F __git_wrap__git_main g
 
 # gogogogo
 export GOPATH=~/gocode/
@@ -125,11 +125,12 @@ fi
 
 # Robinhood
 export APOLLO_NAMESPACE=paul-tarjan
+export ROBINHOOD_EMAIL=paul.tarjan@robinhood.com
 alias ut="DJANGO_SETTINGS_MODULE=settings.local.server REUSE_DB=true ./manage.py test --nologcapture --nocapture"
 alias mut="DJANGO_SETTINGS_MODULE=settings.local.server REUSE_DB=false ./manage.py test --nologcapture --noinput --nocapture"
 alias nut="DJANGO_SETTINGS_MODULE=settings.local.server ./manage.py fast_migrate -t -x DJANGO_SETTINGS_MODULE=settings.local.server ./manage.py test --nologcapture --nocapture --keepdb"
 kshell () {
-	pod=$(kubectl get pods --no-headers -o=custom-columns=NAME:.metadata.name | grep ^$1 | head -1)
+	pod=$(kubectl get pods --no-headers -o=custom-columns=NAME:.metadata.name --field-selector=status.phase=Running | grep ^$1 | head -1)
 	container=""
 	[[ ! -z $2 ]] && container="-c=$2"
 	if [ ! -z $pod ]
