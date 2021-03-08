@@ -104,7 +104,7 @@ services:
       - /mnt/data/Movies:/movies
     ports:
       - 7878:7878
-    image: linuxserver/radarr
+    image: linuxserver/radarr:version-v0.2.0.1504
 
   node-red:
     container_name: node-red
