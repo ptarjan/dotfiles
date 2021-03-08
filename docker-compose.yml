@@ -57,10 +57,9 @@ services:
       - 51413:51413
       - 51413:51413/udp
     volumes:
-      - /home/transmission/config:/config
-      - /mnt/data/Downloads:/downloads
-      - /mnt/data/Watch:/watch
-    image: linuxserver/transmission
+      - /mnt/data/Downloads:/output
+      - /mnt/data/Watch:/to_download
+    image: jaymoulin/transmission
 
   jackett:
     container_name: jackett
