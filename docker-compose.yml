@@ -62,6 +62,20 @@ services:
       - /mnt/data/Watch:/watch
     image: linuxserver/transmission
 
+  deluge:
+    container_name: deluge
+    network_mode: host
+    environment:
+      - PUID=1007
+      - PGID=1007
+      - TZ=Europe/London
+      - DELUGE_LOGLEVEL=error #optional
+    volumes:
+      - /home/deluge:/config
+      - /mnt/data/Downloads:/downloads
+    restart: unless-stopped
+    image: linuxserver/deluge
+
   jackett:
     container_name: jackett
     restart: always
