@@ -151,10 +151,23 @@ services:
       - "67:67/udp"
       - "80:80/tcp"
     environment:
-      TZ: 'America/Chicago'
+      - TZ=America/Los_Angeles
     volumes:
       - './etc-pihole/:/etc/pihole/'
       - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
     cap_add:
       - NET_ADMIN
+    restart: unless-stopped
+
+  tautulli:
+    image: linuxserver/tautulli
+    container_name: tautulli
+    environment:
+      - PUID=1008
+      - PGID=1008
+      - TZ=America/Los_Angeles
+    volumes:
+      - /home/tautulli:/config
+    ports:
+      - 8181:8181
     restart: unless-stopped
