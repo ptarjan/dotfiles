@@ -422,7 +422,7 @@ cnoremap <C-k> <C-\>estrpart(getcmdline(), 0, getcmdpos() - 1)<CR>
 
 " Fugitive - Leader mappings.
 nnoremap <leader>ge :Gedit<CR>
-nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gg :Ggrep<Space>

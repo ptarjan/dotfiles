@@ -35,6 +35,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 fi
 
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
 # Complete g the same as git
 complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g 2>/dev/null \
   || complete -o default -o nospace -F __git_wrap__git_main g
