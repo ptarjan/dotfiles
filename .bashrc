@@ -40,8 +40,7 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 # Complete g the same as git
-complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g 2>/dev/null \
-  || complete -o default -o nospace -F __git_wrap__git_main g
+__git_complete g git
 
 # gogogogo
 export GOPATH=~/gocode/
