@@ -1,70 +1,44 @@
+# ============================================================================
+# Global Git Ignore File
+# ============================================================================
+# Patterns for files that should not be tracked in the dotfiles repository
+
+# ============================================================================
+# Editor and IDE Files
+# ============================================================================
 *.swp
-/.CFUserTextEncoding
-/.DS_Store
-/.NERDTreeBookmarks
-/.Trash/
-/.android/
-/.arcrc
-/.atom/
-/.babel.json
-/.bash_history
-/.bash_sessions/
-/.bazel/
-/.bundle-gemfile-hook
-/.bundle/
-/.bzr.log
-/.cache
-/.cargo/
-/.composer/
-/.config/.mono/
-/.config/configstore/
-/.config/git/
-/.config/gtk-2.0/
-/.config/hub
-/.cordova/
-/.cups/lpoptions
-/.dbshell
-/.dropbox/
-/.electron/
-/.erlang.cookie
-/.gem/
-/.gnupg/
-/.gnuplot_history
-/.heroku/
-/.histfile
-/.history
-/.ionic/
-/.lesshst
-/.lldb/
-/.local/
-/.mongorc.js
-/.mplayer/
-/.netrc
-/.node-gyp/
-/.npm/
-/.npmrc
-/.oracle_jre_usage/
-/.plugman/
-/.profile
-/.pry_history
-/.rbenv/
-/.rbenvrc
-/.rediscli_history
-/.sqlite_history
-/.ssh
-/.subversion/
-/.tmp/
-/.tu/
-/.v8flags.3.28.73.pt.json
-/.vagrant.d/
+/.viminfo
+/.viminfo.tmp
 /.vim/.netrwhist
 /.vim/bundle/
 /.vim/swap_files/
-/.viminfo
-/.viminfo.tmp
-/.vnc
+/.atom/
+
+# ============================================================================
+# macOS System Files
+# ============================================================================
+/.CFUserTextEncoding
+/.DS_Store
+/.Trash/
+
+# ============================================================================
+# Shell History and Configuration
+# ============================================================================
+/.bash_history
+/.bash_sessions/
+/.histfile
+/.history
+/.profile
+/.lesshst
+/.gnuplot_history
+/.pry_history
+/.rediscli_history
+/.sqlite_history
 /.wget-hsts
-/.yarnrc
+
+# ============================================================================
+# User Directories (macOS)
+# ============================================================================
 /Applications/
 /Desktop/
 /Documents/
@@ -75,10 +49,101 @@
 /Music/
 /Pictures/
 /Public/
-/codemod/
+
+# ============================================================================
+# Development Tools and Package Managers
+# ============================================================================
+
+# Node.js and npm
+/.npm/
+/.npmrc
+/.node-gyp/
+/.yarnrc
+/.v8flags.3.28.73.pt.json
+
+# Ruby and gems
+/.gem/
+/.rbenv/
+/.rbenvrc
+/.bundle/
+/.bundle-gemfile-hook
+
+# Python
+/.babel.json
+
+# Cargo (Rust)
+/.cargo/
+
+# Bazel
+/.bazel/
+
+# Composer (PHP)
+/.composer/
+
+# Heroku
+/.heroku/
+
+# ============================================================================
+# Database and Server Tools
+# ============================================================================
+/.dbshell
+/.mongorc.js
+/.netrc
+/.oracle_jre_usage/
+
+# ============================================================================
+# Configuration Directories
+# ============================================================================
+/.cache
+/.config/.mono/
+/.config/configstore/
+/.config/git/
+/.config/gtk-2.0/
+/.config/hub
+/.local/
+
+# ============================================================================
+# Mobile Development
+# ============================================================================
+/.android/
+/.ionic/
+/.cordova/
+/.plugman/
+
+# ============================================================================
+# Security and Credentials
+# ============================================================================
+/.gnupg/
+/.ssh
+
+# ============================================================================
+# Version Control and Tools
+# ============================================================================
+/.bzr.log
+/.subversion/
+
+# ============================================================================
+# Media and Communication
+# ============================================================================
+/.cups/lpoptions
+/.dropbox/
+/.mplayer/
+/.vnc
+
+# ============================================================================
+# Development Utilities
+# ============================================================================
+/.lldb/
+/.electron/
+/.erlang.cookie
+/.NERDTreeBookmarks
+/.tu/
+/.vagrant.d/
 /tmp
 
-# work things
+# ============================================================================
+# Work-specific (Stripe)
+# ============================================================================
 /.sc_last_preflight
 /.stripe-certs/
 /.stripe-repos.sh
@@ -86,3 +151,8 @@
 /gocode
 /projects/
 /stripe/
+
+# ============================================================================
+# Project Directories (Robinhood)
+# ============================================================================
+/codemod/

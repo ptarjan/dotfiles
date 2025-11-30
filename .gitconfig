@@ -1,121 +1,190 @@
+# ============================================================================
+# Git Configuration
+# ============================================================================
+
+# ============================================================================
+# Core Settings
+# ============================================================================
 [core]
 	excludesfile = /Users/paul.tarjan/.gitignore_global
+	# Preload index for faster operations
+	# http://stackoverflow.com/questions/18257622/why-is-git-core-preloadindex-default-value-false
+	preloadindex = true
 
-### colors are meant for a dark terminal
+# ============================================================================
+# Color Configuration (for dark terminals)
+# ============================================================================
 [color]
-  ui = auto
-  diff = auto
-  status = auto
-  branch = auto
-  interactive = auto
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+
 [color "branch"]
-  current = white blue bold
-  local  = blue
-  remote = green
+	current = white blue bold
+	local  = blue
+	remote = green
+
 [color "diff"]
-  plain = white
-  meta = yellow bold
-  frag = magenta bold
-  old = red
-  new = green
-  whitespace = red blink
+	plain = white
+	meta = yellow bold
+	frag = magenta bold
+	old = red
+	new = green
+	whitespace = red blink
+
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 
-[alias]
-  bb = bisect bad
-  bg = bisect good
-  br = branch
-  cp = cherry-pick
-  gr = grep -i
-  ca = commit --amend -a -C HEAD
-  co = checkout
-  st = status -uno
-  di = diff
-  edit = !$EDITOR `git diff HEAD^ --name-only`
-  gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -D || exit 0
-  rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git r origin/master; git ra; git reset --hard; git clean -f; git clean -fdx'"
-  n = "!n() { git checkout origin/stable -b $1; }; n "
-  r = rebase
-  rw = rebase -X ignore-space-change
-  rom = rebase origin/master
-  ri = rebase origin/master -i
-  f = fetch
-  p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL/git.corp.stripe.com:/https://git.corp.stripe.com/}\"; URL=\"${URL/git@/}\"; URL=\"${URL/.git/}\"; open \"${URL}/compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
-  # p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL//ssh:\\/\\/git@/https://}\"; URL=\"${URL//git@git.corp.stripe.com:/https://git.corp.stripe.com/}\"; URL=\"${URL//.git//}\"; open \"${URL}/compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
-  # p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL/ext::\\/usr\\/local\\/stripe\\/bin\\/git-remote-stripe-ext.rb %S /https://git.corp.stripe.com/}\"; URL=\"${URL/.git//}\"; open \"${URL}compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
-  pf = !git push -f && ~/stripe/ci-notify/ci-notify
-  fp = push --force-with-lease
-  s = svn dcommit
-  rc = !git add . && git rebase --continue
-  ra = rebase --abort
-  rbi = rebase -i
-  vim = !vim $(git diff --name-only --diff-filter=U)
-  u = branch --set-upstream-to=origin/master
-  land = !git rebase -i origin/master && git push -u origin -f
-  cam = "!f() { git commit -a -m \"$*\"; }; f"
-  d = "!git ca; f() { arc diff -m \"$*\"; }; f"
-	pulls = !git pull --rebase origin master && git submodule update --init --recursive
-	sub = !git submodule update --init --recursive
-
-[svn]
-  followparent = true
-  rmdir = true
-
+# ============================================================================
+# User Information
+# ============================================================================
 [user]
-  name = Paul Tarjan
+	name = Paul Tarjan
 	email = paul.tarjan@robinhood.com
 	signingkey = 64A58882
-[log]
-  date = relative
-[blame]
-  date = short
-[diff]
-  renames = true
-  mnemonicprefix = true
-[merge]
-  tool = emerge
-[status]
-  # relativePaths = false
-[rebase]
-  stat = true
-[gc]
-  auto = 0
-[push]
-  default = simple
 
-# "push.default = simple" is the default in git 2.0, but OS X still ships git
-# 1.9.3 ("push.default = matching") as of 10.10.2, so... we explicitly specify
-# the modern default to try and keep things sane if you accidentally use the
-# OS-provided git instead of the modern one from our package manager. When a
-# majority of Macs here are running OS X that ships git >= 2.0, we can likely
-# remove this.
+# ============================================================================
+# Aliases
+# ============================================================================
+[alias]
+	# Bisect shortcuts
+	bb = bisect bad
+	bg = bisect good
+
+	# Branch management
+	br = branch
+	u = branch --set-upstream-to=origin/master
+	# Delete all merged branches except master
+	gcbr = !git branch --no-color --no-track --merged | sed 's/[ *]*//' | grep -v master | xargs -n1 git branch -D || exit 0
+
+	# Checkout and commit
+	co = checkout
+	n = "!n() { git checkout origin/stable -b $1; }; n "
+	cp = cherry-pick
+	cam = "!f() { git commit -a -m \"$*\"; }; f"
+	ca = commit --amend -a -C HEAD
+
+	# Status and diff
+	st = status -uno
+	di = diff
+
+	# Grep (case-insensitive)
+	gr = grep -i
+
+	# Edit conflicted files
+	edit = !$EDITOR `git diff HEAD^ --name-only`
+	vim = !vim $(git diff --name-only --diff-filter=U)
+
+	# Rebase shortcuts
+	r = rebase
+	rw = rebase -X ignore-space-change
+	rom = rebase origin/master
+	ri = rebase origin/master -i
+	rbi = rebase -i
+	rc = !git add . && git rebase --continue
+	ra = rebase --abort
+	land = !git rebase -i origin/master && git push -u origin -f
+
+	# Fetch and pull
+	f = fetch
+	pulls = !git pull --rebase origin master && git submodule update --init --recursive
+
+	# Push shortcuts
+	# Push current branch and open compare page in browser
+	p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL/git.corp.stripe.com:/https://git.corp.stripe.com/}\"; URL=\"${URL/git@/}\"; URL=\"${URL/.git/}\"; open \"${URL}/compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
+	pf = !git push -f && ~/stripe/ci-notify/ci-notify
+	fp = push --force-with-lease
+
+	# Submodules
+	sub = !git submodule update --init --recursive
+
+	# SVN integration
+	s = svn dcommit
+
+	# Arcanist (Phabricator)
+	d = "!git ca; f() { arc diff -m \"$*\"; }; f"
+
+	# Reset all branches (dangerous - stashes changes and hard resets)
+	rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git r origin/master; git ra; git reset --hard; git clean -f; git clean -fdx'"
+
+# ============================================================================
+# Behavior Settings
+# ============================================================================
+[log]
+	date = relative
+
+[blame]
+	date = short
+
+[diff]
+	renames = true
+	mnemonicprefix = true
+
+[merge]
+	tool = emerge
+
+[status]
+	# relativePaths = false
+
+[rebase]
+	stat = true
+
+[gc]
+	auto = 0
+
+# Push to current branch by default (modern git behavior)
+# Note: "push.default = simple" is the default in git 2.0+
+# Explicitly set for compatibility with older git versions
 [push]
 	default = simple
 
+# ============================================================================
+# SVN Integration
+# ============================================================================
+[svn]
+	followparent = true
+	rmdir = true
 
-
-# http://stackoverflow.com/questions/18257622/why-is-git-core-preloadindex-default-value-false
-[core]
-	preloadindex = true
+# ============================================================================
+# External Tools
+# ============================================================================
 [web]
 	browser = open
+
 [hub]
 	host = git.corp.stripe.com
+
+# ============================================================================
+# Protocol and Performance
+# ============================================================================
 [protocol]
 	version = 2
+
+# ============================================================================
+# Git LFS (Large File Storage)
+# ============================================================================
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+# ============================================================================
+# Credential Management
+# ============================================================================
 [credential]
 	helper = ""
+	helper = manager-core
+
 [credential "https://dev.azure.com"]
 	useHttpPath = true
-[credential]
-	helper = manager-core
+
+# ============================================================================
+# Maintenance
+# ============================================================================
 [maintenance]
 	repo = /Users/paul.tarjan/robinhood/rh
