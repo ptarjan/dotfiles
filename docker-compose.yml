@@ -1,9 +1,19 @@
+# ============================================================================
+# Docker Compose Configuration
+# ============================================================================
+# Media server and home automation stack
+# Services: Plex, Sonarr, Radarr, Transmission, Home Assistant, and more
+
 version: '3.3'
 
 volumes:
   portainer_data:
 
 services:
+  # ==========================================================================
+  # Plex Media Server
+  # ==========================================================================
+  # Stream movies, TV shows, and other media to devices
   plex:
     container_name: plex
     restart: always
@@ -17,6 +27,10 @@ services:
       - /mnt/data:/media
     image: jaymoulin/plex
 
+  # ==========================================================================
+  # Home Assistant
+  # ==========================================================================
+  # Home automation platform
   home-assistant:
     container_name: home-assistant
     restart: always
@@ -29,6 +43,10 @@ services:
       - /etc/letsencrypt/:/ssl
     image: homeassistant/raspberrypi4-homeassistant:stable
 
+  # ==========================================================================
+  # Sonarr
+  # ==========================================================================
+  # TV show library manager and automatic downloader
   sonarr:
     container_name: sonarr
     restart: always
@@ -45,6 +63,10 @@ services:
       - /mnt/data/Downloads:/downloads
     image: linuxserver/sonarr
 
+  # ==========================================================================
+  # Transmission
+  # ==========================================================================
+  # BitTorrent client with web interface
   transmission:
     container_name: transmission
     restart: always
@@ -53,15 +75,19 @@ services:
       - PUID=1003
       - TZ=Americas/Los_Angeles
     ports:
-      - 9091:9091
-      - 51413:51413
-      - 51413:51413/udp
+      - 9091:9091      # Web UI
+      - 51413:51413    # Peer port (TCP)
+      - 51413:51413/udp # Peer port (UDP)
     volumes:
       - /home/transmission/config:/config
       - /mnt/data/Downloads:/downloads
       - /mnt/data/Watch:/watch
     image: linuxserver/transmission
 
+  # ==========================================================================
+  # Deluge
+  # ==========================================================================
+  # Alternative BitTorrent client
   deluge:
     container_name: deluge
     network_mode: host
@@ -76,6 +102,10 @@ services:
     restart: unless-stopped
     image: linuxserver/deluge
 
+  # ==========================================================================
+  # Jackett
+  # ==========================================================================
+  # Indexer proxy for torrent trackers
   jackett:
     container_name: jackett
     restart: always
@@ -90,6 +120,10 @@ services:
       - 9117:9117
     image: linuxserver/jackett
 
+  # ==========================================================================
+  # CouchPotato (Disabled)
+  # ==========================================================================
+  # Movie library manager (replaced by Radarr)
 #   couchpotato:
 #     container_name: couchpotato
 #     restart: always
@@ -105,6 +139,10 @@ services:
 #       - /mnt/data/Movies:/movies
 #     image: linuxserver/couchpotato
 
+  # ==========================================================================
+  # Radarr
+  # ==========================================================================
+  # Movie library manager and automatic downloader
   radarr:
     container_name: radarr
     restart: always
@@ -120,6 +158,10 @@ services:
       - 7878:7878
     image: linuxserver/radarr
 
+  # ==========================================================================
+  # Node-RED
+  # ==========================================================================
+  # Flow-based programming tool for automation
   node-red:
     container_name: node-red
     image: nodered/node-red:latest
@@ -130,26 +172,34 @@ services:
     volumes:
       - /home/pt/node-red:/data
 
+  # ==========================================================================
+  # Portainer
+  # ==========================================================================
+  # Docker container management UI
   portainer:
     container_name: portainer
     image: portainer/portainer
     command: -H unix:///var/run/docker.sock
     restart: always
     ports:
-      - 9000:9000
-      - 8000:8000
+      - 9000:9000  # Web UI
+      - 8000:8000  # Edge agent
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
 
+  # ==========================================================================
+  # Pi-hole
+  # ==========================================================================
+  # Network-wide ad blocker and DNS server
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-      - "67:67/udp"
-      - "80:80/tcp"
+      - "53:53/tcp"    # DNS
+      - "53:53/udp"    # DNS
+      - "67:67/udp"    # DHCP
+      - "80:80/tcp"    # Web interface
     environment:
       - TZ=America/Los_Angeles
     volumes:
@@ -159,6 +209,10 @@ services:
       - NET_ADMIN
     restart: unless-stopped
 
+  # ==========================================================================
+  # Tautulli
+  # ==========================================================================
+  # Plex monitoring and statistics tool
   tautulli:
     image: linuxserver/tautulli
     container_name: tautulli
