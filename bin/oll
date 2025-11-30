@@ -1,2 +1,0 @@
-# lldb ./bazel-bin/main/sorbet -- --silence-dev-message --no-error-count --typed=true --llvm-ir-folder /tmp "$@"
-lldb ./bazel-bin/main/sorbet -- --silence-dev-message --no-error-count "$@"
