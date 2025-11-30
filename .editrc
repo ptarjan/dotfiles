@@ -1,4 +1,14 @@
+# ============================================================================
+# Editline Configuration (.editrc)
+# ============================================================================
+# Controls the behavior of the editline library (BSD's readline alternative)
+# Used by programs like sftp, ftp, and other BSD utilities
+
+# Use vi-style editing mode
 bind -v
+
+# Ctrl-R - Reverse incremental search (like in bash)
 bind "^R" em-inc-search-prev
 
+# jk - Switch to vi command mode from insert mode (alternative to ESC)
 bind "jk" vi-command-mode
