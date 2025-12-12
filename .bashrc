@@ -68,12 +68,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # Git completion
+# Source git-completion.bash and set up completion for 'g' alias
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
+  # Complete g the same as git (requires __git_complete from git-completion.bash)
+  __git_complete g git
 fi
-
-# Complete g the same as git
-__git_complete g git
 
 
 # ============================================================================
