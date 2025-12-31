@@ -38,7 +38,7 @@ services:
     ports:
       - 8123:8123
     volumes:
-      - /home/homeassistant-config:/config
+      - /home/pt/homeassistant-config:/config
       - /etc/letsencrypt/:/ssl
     image: homeassistant/raspberrypi4-homeassistant:stable
 
@@ -169,7 +169,7 @@ services:
     ports:
       - 1880:1880
     volumes:
-      - /home/node-red:/data
+      - /home/pt/node-red:/data
 
   # ==========================================================================
   # Portainer
