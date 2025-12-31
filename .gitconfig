@@ -6,7 +6,7 @@
 # Core Settings
 # ============================================================================
 [core]
-	excludesfile = /Users/paul.tarjan/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	# Preload index for faster operations
 	# http://stackoverflow.com/questions/18257622/why-is-git-core-preloadindex-default-value-false
 	preloadindex = true
@@ -44,7 +44,7 @@
 # ============================================================================
 [user]
 	name = Paul Tarjan
-	email = paul.tarjan@robinhood.com
+	email = pt@paulisageek.com
 	signingkey = 64A58882
 
 # ============================================================================
@@ -95,8 +95,8 @@
 
 	# Push shortcuts
 	# Push current branch and open compare page in browser
-	p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL/git.corp.stripe.com:/https://git.corp.stripe.com/}\"; URL=\"${URL/git@/}\"; URL=\"${URL/.git/}\"; open \"${URL}/compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
-	pf = !git push -f && ~/stripe/ci-notify/ci-notify
+	p = "!p() { BRANCH=\"$(git symbolic-ref HEAD)\"; BRANCH=\"${BRANCH#refs/heads/}\"; git push -u origin \"$BRANCH\"; URL=\"$(git remote get-url origin)\"; URL=\"${URL/git@github.com:/https://github.com/}\"; URL=\"${URL/.git/}\"; open \"${URL}/compare/${BRANCH//\\//%2F}?expand=1\"; }; p"
+	pf = push --force-with-lease
 	fp = push --force-with-lease
 
 	# Submodules
@@ -104,9 +104,6 @@
 
 	# SVN integration
 	s = svn dcommit
-
-	# Arcanist (Phabricator)
-	d = "!git ca; f() { arc diff -m \"$*\"; }; f"
 
 	# Reset all branches (dangerous - stashes changes and hard resets)
 	rall = "!git stash -u; git branch --no-color --no-track | sed 's/[ *]*//' | grep -v master | xargs -I % sh -c 'git co %; git r origin/master; git ra; git reset --hard; git clean -f; git clean -fdx'"
@@ -155,9 +152,6 @@
 [web]
 	browser = open
 
-[hub]
-	host = git.corp.stripe.com
-
 # ============================================================================
 # Protocol and Performance
 # ============================================================================
@@ -183,8 +177,3 @@
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 
-# ============================================================================
-# Maintenance
-# ============================================================================
-[maintenance]
-	repo = /Users/paul.tarjan/robinhood/rh

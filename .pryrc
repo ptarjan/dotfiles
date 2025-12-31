@@ -29,20 +29,7 @@ Pry.commands.alias_command 'f', 'finish'
 Pry.commands.alias_command 'b', 'break'
 
 # ============================================================================
-# Stripe-specific Configuration
+# Editor Configuration
 # ============================================================================
-### BEGIN STRIPE
-env='local'
-
-# Colorize prompt based on environment
-envs_to_show = {
-  'production' => Pry::Helpers::Text.red(Pry::Helpers::Text.bold('PRODUCTION')),
-  'qa' => Pry::Helpers::Text.green('QA'),
-  'devbox' => Pry::Helpers::Text.green('dev'),
-}
-Pry.config.prompt = proc {|obj, nest_level, _| "[#{envs_to_show[env]}] #{obj}:#{nest_level}> "}
-
 # Use vim as the default editor
 Pry.config.editor = 'vim'
-
-### END STRIPE

@@ -20,7 +20,7 @@ services:
     network_mode: host
     environment:
       - TZ=America/Los_Angeles
-      - PLEX_CLAIM=claim-eU-xGCDwJvizpq_LEuNS
+      - PLEX_CLAIM=your-claim-token-here
     volumes:
       - /home/plex:/root/Library
       - /mnt/data/Transcode:/transcode
@@ -39,7 +39,7 @@ services:
     ports:
       - 8123:8123
     volumes:
-      - /home/pt/homeassistant-config:/config
+      - /home/homeassistant-config:/config
       - /etc/letsencrypt/:/ssl
     image: homeassistant/raspberrypi4-homeassistant:stable
 
@@ -170,7 +170,7 @@ services:
     ports:
       - 1880:1880
     volumes:
-      - /home/pt/node-red:/data
+      - /home/node-red:/data
 
   # ==========================================================================
   # Portainer
