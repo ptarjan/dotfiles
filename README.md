@@ -10,15 +10,7 @@ cd ~/dotfiles
 ./install.sh
 ```
 
-The install script symlinks all dotfiles to your home directory, backing up any existing files.
-
-### Vim Setup
-
-```bash
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
-vim +PluginInstall +qall
-```
+The install script symlinks all dotfiles to your home directory (backing up existing files) and sets up Vim with Vundle plugins.
 
 ## Highlights
 

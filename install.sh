@@ -28,6 +28,16 @@ for src in "$DOTFILES_DIR"/.*; do
   ln -s "$src" "$dst"
 done
 
+# Vim setup
+mkdir -p ~/.vim/{backup_files,swap_files,undo_files}
+
+if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+  echo "Installing Vundle..."
+  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  echo "Installing Vim plugins..."
+  vim +PluginInstall +qall
+fi
+
 echo ""
 echo "Done! Add bin to PATH if not already present:"
 echo "  export PATH=\"\$PATH:$DOTFILES_DIR/bin\""
