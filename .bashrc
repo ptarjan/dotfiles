@@ -113,7 +113,6 @@ export PATH=$PATH:$GOPATH/bin
 export PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig/
 
 # Custom paths
-PATH=$PATH:~/stripe/sorbet/bazel-bin/main/
 PATH=$PATH:~/bin
 
 # Remove this since it seems to already be coming from somewhere else...
@@ -167,47 +166,8 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # ============================================================================
-# COMPANY-SPECIFIC CONFIGURATIONS
-# ============================================================================
-
-# --- Stripe ---
-if [ -f ~/.stripe-repos.sh ]; then
-    . /Users/pt/.rbenvrc
-    . ~/.stripe-repos.sh
-    export AWS_ACCESS_KEY_ID=":"
-    export AWS_SECRET_ACCESS_KEY=":"
-
-    # BEGIN STRIPE NODE CONFIG
-    #      To undo the following behavior, comment it out, dont delete it;
-    #      'pay-server/scripts/frontend/install_node_modules' will just add it again.
-    #      Ask in #frontend-infra or #iteng if you have questions.
-    export PATH="node_modules/.bin:$PATH"
-    # END STRIPE NODE CONFIG
-
-    # BEGIN STRIPE NODE CONFIG
-    #      To undo the following behavior, comment it out, dont delete it;
-    #      'pay-server/scripts/frontend/install_node_modules' will just add it again.
-    #      Ask in #dashboard-platform or #iteng if you have questions.
-    export PATH="./node_modules/.bin:$PATH"
-    # END STRIPE NODE CONFIG
-
-    # added by travis gem
-    [ -f /Users/pt/.travis/travis.sh ] && source /Users/pt/.travis/travis.sh
-fi
-
-# --- Robinhood ---
-export APOLLO_NAMESPACE=paul-tarjan
-export ROBINHOOD_EMAIL=paul.tarjan@robinhood.com
-
-
-# ============================================================================
 # CUSTOM FUNCTIONS
 # ============================================================================
-
-# Robinhood test aliases
-alias ut="DJANGO_SETTINGS_MODULE=settings.local.server REUSE_DB=true ./manage.py test --nologcapture --nocapture"
-alias mut="DJANGO_SETTINGS_MODULE=settings.local.server REUSE_DB=false ./manage.py test --nologcapture --noinput --nocapture"
-alias nut="DJANGO_SETTINGS_MODULE=settings.local.server ./manage.py fast_migrate -t -x DJANGO_SETTINGS_MODULE=settings.local.server ./manage.py test --nologcapture --nocapture --keepdb"
 
 # Kubectl shell - quickly get a shell in a running pod
 kshell () {

@@ -11,23 +11,6 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # ============================================================================
-# Stripe-specific Configuration
-# ============================================================================
-### BEGIN STRIPE
-if [ -f ~/.stripe_profile ]; then
-  source ~/.stripe_profile
-fi
-### END STRIPE
-
-### BEGIN HENSON
-export PATH="/Users/pt/stripe/henson/bin:$PATH"
-### END HENSON
-
-# Stripe tools
-export PATH="/Users/pt/stripe/password-vault/bin:$PATH"
-export PATH="/Users/pt/stripe/space-commander/bin:$PATH"
-
-# ============================================================================
 # System Paths
 # ============================================================================
 # System binaries
@@ -45,8 +28,8 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 # Ruby Environment
 # ============================================================================
 # rbenv - Ruby version management
-export PATH="/Users/pt/.rbenv/shims:$PATH"
-export PATH="/Users/pt/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 # ============================================================================
 # Python Environment
@@ -77,13 +60,6 @@ export LDFLAGS=-L/usr/local/opt/openssl@1.1/lib
 # ============================================================================
 # Visual Studio Code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-# ============================================================================
-# Project-specific Configuration
-# ============================================================================
-# Robinhood project settings
-export PROJECT_HOME="/Users/paul.tarjan/robinhood"
-export PATH="$PATH:$HOME/robinhood/phabricator/arcanist/bin/"
 
 # ============================================================================
 # iTerm2 Integration

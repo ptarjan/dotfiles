@@ -202,9 +202,6 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard | grep -v node_modules', 'find %s -type f']
 let g:ctrlp_cmd = 'CtrlPMixed'
 
-" --- GitHub Enterprise ---
-let g:github_enterprise_urls = ['https://git.corp.stripe.com']
-
 " --- PHP ---
 let g:DisableAutoPHPFolding = 1
 
