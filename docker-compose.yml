@@ -20,7 +20,6 @@ services:
     network_mode: host
     environment:
       - TZ=America/Los_Angeles
-      - PLEX_CLAIM=your-claim-token-here
     volumes:
       - /home/plex:/root/Library
       - /mnt/data/Transcode:/transcode
