@@ -10,18 +10,15 @@ Personal configuration files for Unix/macOS development environment.
 # Clone the repository
 git clone https://github.com/ptarjan/dotfiles.git ~/dotfiles
 
-# Create symlinks for the configs you want
-ln -sf ~/dotfiles/.bashrc ~/.bashrc
-ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
-ln -sf ~/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/dotfiles/.inputrc ~/.inputrc
-ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -sf ~/dotfiles/.screenrc ~/.screenrc
-
-# Add bin to your PATH (add to .bashrc or .bash_profile)
-export PATH="$PATH:~/dotfiles/bin"
+# Run the install script
+cd ~/dotfiles
+./install.sh
 ```
+
+The install script will:
+- Create symlinks for all dotfiles to your home directory
+- Back up any existing files (as `filename.backup`)
+- Set up `.config/` directories (htop, nvim)
 
 ### Vim Setup
 
