@@ -45,7 +45,14 @@
 [user]
 	name = Paul Tarjan
 	email = github@paulisageek.com
-	signingkey = 64A58882
+	# SSH key for commit signing - use: ssh-add -L to find your key
+	signingkey = ~/.ssh/id_rsa.pub
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
 
 # ============================================================================
 # Aliases
