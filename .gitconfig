@@ -66,7 +66,7 @@
 
 [user]
   name = Paul Tarjan
-	email = paul.tarjan@robinhood.com
+	email = github@paulisageek.com
 	signingkey = 64A58882
 [log]
   date = relative
@@ -100,6 +100,7 @@
 # http://stackoverflow.com/questions/18257622/why-is-git-core-preloadindex-default-value-false
 [core]
 	preloadindex = true
+	fsmonitor = true
 [web]
 	browser = open
 [hub]
@@ -112,10 +113,25 @@
 	process = git-lfs filter-process
 	required = true
 [credential]
-	helper = ""
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [credential]
-	helper = manager-core
+	helper = osxkeychain
 [maintenance]
 	repo = /Users/paul.tarjan/robinhood/rh
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpuser = ptarjan@gmail.com
+	from = Paul Tarjan <github@paulisageek.com>
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/local/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/local/bin/gh auth git-credential
+
+# Machine-local / secret settings (untracked; see .gitignore)
+[include]
+	path = .gitconfig.local
