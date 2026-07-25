@@ -1,1 +1,0 @@
-exec ./sorbet/scripts/typecheck_devel --silence-dev-message "$@"

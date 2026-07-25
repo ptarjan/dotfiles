@@ -1,8 +1,24 @@
+# ============================================================================
+# RubyGems Configuration (.gemrc)
+# ============================================================================
+# Configuration file for RubyGems package manager
+
 ---
+# Don't display full backtrace on errors (cleaner output)
 :backtrace: false
+
+# Threshold for bulk gem operations (1000 gems)
 :bulk_threshold: 1000
+
+# Gem sources to fetch from
 :sources:
 - https://rubygems.org/
+
+# Automatically update sources when installing gems
 :update_sources: true
+
+# Display verbose output during gem operations
 :verbose: true
+
+# Generate yri documentation when installing gems (not rdoc)
 gem: "--document=yri"

@@ -1,13 +1,36 @@
+# ============================================================================
+# Readline Configuration (.inputrc)
+# ============================================================================
+# Controls the behavior of the readline library used by bash and other programs
+# for command-line editing
+
+# ============================================================================
+# Vi Mode Configuration
+# ============================================================================
+# Use vi-style editing mode instead of emacs mode
 set editing-mode vi
 
+# ----------------------------------------------------------------------------
+# Vi Command Mode Keybindings
+# ----------------------------------------------------------------------------
 set keymap vi-command
+# gg - Jump to beginning of history (like vim)
 "gg": beginning-of-history
+# G - Jump to end of history (like vim)
 "G": end-of-history
 
+# ----------------------------------------------------------------------------
+# Vi Insert Mode Keybindings
+# ----------------------------------------------------------------------------
 set keymap vi-insert
+# jk - Exit insert mode and enter command mode (alternative to ESC)
 "jk": vi-movement-mode
+# Ctrl-w - Delete word backwards
 "\C-w": backward-kill-word
+# Ctrl-p - Search backward through history
 "\C-p": history-search-backward
 
+# Option + Right Arrow - Move forward one word (macOS)
 "\e[1;9C": forward-word
+# Option + Left Arrow - Move backward one word (macOS)
 "\e[1;9D": backward-word
