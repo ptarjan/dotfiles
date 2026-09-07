@@ -6,7 +6,6 @@
 # Core Settings
 # ============================================================================
 [core]
-	excludesfile = ~/.gitignore_global
 	# Preload index for faster operations
 	# http://stackoverflow.com/questions/18257622/why-is-git-core-preloadindex-default-value-false
 	preloadindex = true
