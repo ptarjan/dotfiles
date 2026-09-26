@@ -87,7 +87,15 @@ services:
     ports:
       - 9091:9091
       - 51413:51413
-      - 51413:51413/udp
+      # The peer port is TCP-only on purpose. Docker Desktop forwards a
+      # published UDP port through a userspace multiplexer in the VM, and it
+      # costs a whole connection setup and teardown per inbound datagram —
+      # which is what the DHT sends, from thousands of distinct nodes. Publish
+      # 51413/udp and every DHT query on the internet becomes VM CPU: four of
+      # this Mac's cores, until the engine stops answering and every container
+      # on it starves. Outgoing DHT and uTP still work, NAT'd like any other
+      # egress; what is given up is unsolicited INBOUND UDP, so peers reach
+      # this box over TCP. Do not add it back without a way to bound it.
     restart: unless-stopped
 
   # Disabled 2026-05-31: only filter (LegalPorno/AnalVids) was off since Feb and
