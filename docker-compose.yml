@@ -160,7 +160,7 @@ services:
       - USER_GUEST_NAME=switch
       - USER_GUEST_PASSWORD=e4027749
     volumes:
-      - /Volumes/Media/Switch:/games
+      - /Volumes/Media/Games/Switch:/games
       - /Users/pt/docker-configs/ownfoil/config:/app/config
       - /Users/pt/docker-configs/ownfoil/data:/app/data
     ports:
