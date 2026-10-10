@@ -184,18 +184,6 @@ services:
 
   # ===== EXISTING SERVICES =====
 
-  # sonarr_youtubedl:
-  #   image: whatdaybob/sonarr_youtubedl
-  #   container_name: sonarr_youtubedl
-  #   entrypoint: ["/update-ytdlp.sh"]
-  #   command: ["python", "-u", "/app/sonarr_youtubedl.py"]
-  #   volumes:
-  #     - /Users/pt/sonarr_youtubedl_docker/config:/config
-  #     - /Volumes/Media:/sonarr_root/Volumes/Media
-  #     - /Users/pt/sonarr_youtubedl_docker/logs:/logs
-  #     - /Users/pt/sonarr_youtubedl_docker/update-ytdlp.sh:/update-ytdlp.sh:ro
-  #   restart: unless-stopped
-
   overseerr:
     image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr
